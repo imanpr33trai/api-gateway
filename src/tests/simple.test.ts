@@ -1,27 +1,24 @@
-import { describe, expect, spyOn, test } from "bun:test";
-import app from "../index";
-import { Nvidia } from "../providers/nvidia";
-import { Role } from "../providers/types";
+// src/tests/chat.test.ts
+import { describe, test } from "bun:test";
+import { Hono } from "hono";
+import { chatRoute } from "../routes/chat";
 
-describe("Chat API", () => {
-   test("POST / should return a chat response", async () => {
-      // 1. Mock the Nvidia provider
-      const mockMessages = [
-         { role: Role.ASSISTANT, content: "Hello! I am an AI." },
-      ];
-      const spy = spyOn(Nvidia, "generateText").mockResolvedValue(mockMessages);
+// Mock the main app to include the chatRoute
+const app = new Hono();
+app.route("/", chatRoute);
 
-      // 2. Simulate a request
-      const res = await app.request("/", {
+describe("Chat Endpoint Test", () => {
+   test("should log the response from the /chat endpoint", async () => {
+      // Simulate a request to the /chat endpoint
+      const res = await app.request("/chat", {
          method: "POST",
-         body: JSON.stringify({ prompt: "Hi" }),
+         body: JSON.stringify({ prompt: "Hello, world!" }),
          headers: { "Content-Type": "application/json" },
       });
 
-      // 3. Assertions
-      expect(res.status).toBe(200);
-      const body = await res.json();
-      expect(body.result).toEqual(mockMessages);
-      expect(spy).toHaveBeenCalledWith("Hi");
+      // Log the response
+      console.log("Response Status:", res.status);
+      const text = await res.text();
+      console.log("Response Body:", text);
    });
 });

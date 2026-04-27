@@ -8,86 +8,74 @@ export enum Role {
    TOOL = "tool",
 }
 
-type Function = {
-   name: string | null;
-   arguments: string | null;
-};
+export const ToolFunctionSchema = z.object({
+   name: z.string().nullable(),
+   arguments: z.string().nullable(),
+});
 
-type ToolCalls = {
-   id: string;
-   type: "function";
-   function: Function;
-};
+export type ToolFunction = z.infer<typeof ToolFunctionSchema>;
 
-export type ToolDefinition = {
-   type: "function";
-   function: {
-      name: string;
-      description: string | null;
-      parameters: Record<string, unknown>;
-   };
-};
+export const ToolCallSchema = z.object({
+   id: z.string(),
+   type: z.literal("function"),
+   function: ToolFunctionSchema,
+});
 
-export enum ContentType {
-   TEXT = "text",
-   IMAGE_URL = "image_url",
-}
+export type ToolCall = z.infer<typeof ToolCallSchema>;
 
-export interface TextContentPart {
-   type: ContentType.TEXT;
-   text: string;
-}
-
-export type Messages = {
-   role: Role;
-   content: string | null;
-   // tool_call_id: string | null;
-   // tool_calls: ToolCalls[] | null;
-};
-
-export interface ChatRequest {
-   model: string;
-   messages: Messages[];
-   temperature: number;
-   top_p: number;
-   tools: ToolDefinition[];
-   max_tokens: number;
-   seed: number;
-   stream: boolean;
-}
-
-export type Choices = {
-   index: number;
-   message: Messages;
-};
-
-export type ChatResponse = {
-   id: string;
-   choices: Choices;
-   finish_reason: string | null;
-   usage: {
-      completion_tokens: number;
-      prompt_tokens: number;
-      total_tokens: number;
-   };
-};
-
-const ChatMessageSchema = z.object({
+export const MessageSchema = z.object({
    role: z.nativeEnum(Role),
    content: z.string().nullable(),
+   tool_call_id: z.string().nullable().optional().default(null),
+   tool_calls: z.array(ToolCallSchema).optional().default([]),
+   name: z.string().optional(),
 });
 
-export const ChatCompletionSchema = z.object({
-   id: z.string(),
-   choices: z.array(
-      z.object({
-         index: z.number(),
-         message: ChatMessageSchema,
-      }),
-   ),
-   usage: z.object({
-      completion_tokens: z.number(),
-      prompt_tokens: z.number(),
-      total_tokens: z.number(),
-   }),
+export type Messages = z.infer<typeof MessageSchema>;
+
+export const ChatRequestSchema = z
+   .object({
+      model: z.string(),
+      messages: z.array(MessageSchema),
+      temperature: z.number().optional(),
+      top_p: z.number().optional(),
+      max_tokens: z.number().optional(),
+      tools: z.array(ToolCallSchema).optional(),
+      seed: z.number().optional(),
+      stream: z.boolean().optional(),
+   })
+   .strict();
+
+export type ChatRequest = z.infer<typeof ChatRequestSchema>;
+
+const ChoiceSchema = z.object({
+   index: z.number(),
+   message: MessageSchema,
+   finish_reason: z.string().nullable().optional(),
 });
+
+const UsageSchema = z
+   .object({
+      completion_tokens: z.number().optional(),
+      prompt_tokens: z.number().optional(),
+      total_tokens: z.number().optional(),
+   })
+   .optional();
+
+export const ChatResponseSchema = z.object({
+   id: z.string(),
+   object: z.string().optional(),
+   choices: z.array(ChoiceSchema),
+   finish_reason: z.string().nullable().optional(),
+   usage: UsageSchema,
+   model: z.string().optional(),
+   created: z.number().optional(),
+});
+
+export type ChatResponse = z.infer<typeof ChatResponseSchema>;
+
+export {
+   MessageSchema as ChatMessageSchema,
+   ChoiceSchema,
+   ToolCallSchema as ToolDefinition,
+};
