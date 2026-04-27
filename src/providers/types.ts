@@ -24,11 +24,10 @@ export const ToolCallSchema = z.object({
 export type ToolCall = z.infer<typeof ToolCallSchema>;
 
 export const MessageSchema = z.object({
-   role: z.nativeEnum(Role),
+   role: z.enum(Role),
    content: z.string().nullable(),
    tool_call_id: z.string().nullable().optional().default(null),
    tool_calls: z.array(ToolCallSchema).optional().default([]),
-   name: z.string().optional(),
 });
 
 export type Messages = z.infer<typeof MessageSchema>;
