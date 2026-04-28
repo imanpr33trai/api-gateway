@@ -46,10 +46,11 @@ export const Nvidia = {
      },
      async streamText(
           prompt: string,
+          { signal }: { signal?: AbortSignal } = {},
           temperature: number = 0.7,
           model: string = "openai/gpt-oss-120b",
           top_p: number = 0.8,
-          max_tokens: number = 4096,
+          max_tokens: number = 16384,
           seed: number = 42,
           stream: boolean = true,
      ): Promise<ReadableStream<Uint8Array>> {
@@ -72,6 +73,12 @@ export const Nvidia = {
                ChatRequestSchema,
 
                modelOptions,
+               {
+                    headers: {
+                         Authorization: `Bearer ${process.env.NVIDIA_API_KEY}`,
+                    },
+                    signal,
+               },
           );
           return readableStream;
      },

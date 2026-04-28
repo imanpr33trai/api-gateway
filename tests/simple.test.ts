@@ -1,7 +1,7 @@
 // src/tests/chat.test.ts
 import { describe, test } from "bun:test";
 import { Hono } from "hono";
-import { chatRoute } from "../routes/chat";
+import { chatRoute } from "../src/routes/chat";
 
 // Mock the main app to include the chatRoute
 const app = new Hono();
