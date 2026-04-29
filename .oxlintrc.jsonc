@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "promise", "node", "unicorn", "eslint"],
+  "categories": {
+    "correctness": "warn",
+    "nursery": "warn",
+    "pedantic": "warn",
+    // "style": "warn",
+    "perf": "warn",
+    // "restriction": "error",
+    "suspicious": "warn",
+  },
+  "rules": {
+    "typescript/no-floating-promises": "error",
+    "eslint/no-unused-vars": "error",
+    "typescript/await-thenable": "error",
+  },
+  "extends": ["nkzw"],
+  "jsPlugins": [
+    "@nkzw/eslint-plugin",
+    "eslint-plugin-no-only-tests",
+    "eslint-plugin-perfectionist",
+    "eslint-plugin-unused-imports",
+    { "name": "react-hooks-js", "specifier": "eslint-plugin-react-hooks" },
+  ],
+  "settings": {
+    "jsx-a11y": {
+      "polymorphicPropName": null,
+      "components": {},
+      "attributes": {},
+    },
+    "next": {
+      "rootDir": [],
+    },
+    "react": {
+      "formComponents": [],
+      "linkComponents": [],
+      "version": null,
+      "componentWrapperFunctions": [],
+    },
+    "typescript": {},
+    "jsdoc": {
+      "ignorePrivate": false,
+      "ignoreInternal": false,
+      "ignoreReplacesDocs": true,
+      "overrideReplacesDocs": true,
+      "augmentsExtendsReplacesDocs": false,
+      "implementsReplacesDocs": false,
+      "exemptDestructuredRootsFromChecks": false,
+      "tagNamePreference": {},
+    },
+    "vitest": {
+      "typecheck": false,
+    },
+  },
+  "env": {
+    "builtin": true,
+  },
+  "globals": {},
+  "ignorePatterns": [],
+}
