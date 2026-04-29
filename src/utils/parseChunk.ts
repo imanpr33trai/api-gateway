@@ -1,4 +1,4 @@
-import { StreamChunkSchema, type ParsedChunk } from "../providers/types";
+import { StreamChunkSchema, type ParsedChunk } from "../types/types";
 
 export const parseSSEChunk = (raw: string): ParsedChunk | null => {
      const line = raw.trim();

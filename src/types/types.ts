@@ -11,26 +11,36 @@ export enum Role {
 export const ToolFunctionSchema = z.object({
      name: z.string().nullable(),
      arguments: z.string().nullable(),
+     description: z.string(),
 });
 
 export type ToolFunction = z.infer<typeof ToolFunctionSchema>;
 
-export const ToolCallSchema = z.object({
+export const ToolCallMessageSchema = z.object({
      id: z.string(),
      type: z.literal("function"),
      function: ToolFunctionSchema,
 });
 
-export type ToolCall = z.infer<typeof ToolCallSchema>;
+export type ToolCall = z.infer<typeof ToolCallMessageSchema>;
 
 export const MessageSchema = z.object({
      role: z.enum(Role),
      content: z.string().nullable(),
      tool_call_id: z.string().nullable().optional().default(null),
-     tool_calls: z.array(ToolCallSchema).optional().default([]),
+     tool_calls: z.array(ToolCallMessageSchema).optional().default([]),
 });
 
 export type Messages = z.infer<typeof MessageSchema>;
+
+export const ToolCallSchema = z.object({
+     type: z.literal("function"),
+     function: z.object({
+          name: z.string(),
+          parameters: z.record(z.string(), z.unknown()),
+          description: z.string(),
+     }),
+});
 
 export const ChatRequestSchema = z
      .object({

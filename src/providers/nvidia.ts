@@ -1,12 +1,12 @@
-import { postValidated } from "../utils/postJsonValidation";
-import { postStreaming } from "../utils/postStreamValidation";
-import { ModelList, type ModelsResponse } from "./model.type";
+import { ModelList, type ModelsResponse } from "../types/model.type";
 import {
      ChatRequestSchema,
      ChatResponseSchema,
      Role,
      type Messages,
-} from "./types";
+} from "../types/types";
+import { postValidated } from "../utils/postJsonValidation";
+import { postStreaming } from "../utils/postStreamValidation";
 
 const BASE_URL = "https://integrate.api.nvidia.com/v1";
 
@@ -97,5 +97,8 @@ export const Nvidia = {
           const json = await response.json();
           const data = ModelList.parse(json);
           return data;
+     },
+     async generateChat(messages: any[]) {
+          const response = await fetch(`${BASE_URL}/chat`);
      },
 };
