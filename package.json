@@ -4,24 +4,32 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "dev": "bun run src/index.ts"
+    "dev": "bun run src/index.ts",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
+    "drizzle-zod": "^0.8.3",
     "hono": "^4.12.14",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@nkzw/eslint-plugin": "^2.0.0",
-    "@nkzw/oxlint-config": "^1.1.1",
     "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
     "drizzle-kit": "^0.31.10",
+    "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-no-only-tests": "^3.4.0",
     "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-prefer-let": "^4.2.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-unused-imports": "^4.4.1",
     "oxfmt": "^0.47.0",
-    "oxlint": "^1.62.0"
+    "oxlint": "^1.62.0",
+    "oxlint-tsgolint": "^0.22.1"
   },
   "peerDependencies": {
     "typescript": "^5"

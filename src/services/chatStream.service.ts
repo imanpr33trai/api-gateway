@@ -1,9 +1,9 @@
-import { Nvidia } from "../providers/nvidia";
+import { Nvidia } from '../providers/nvidia'
 
 export const chatStreamService = async (
-     prompt: string,
-     { signal }: { signal?: AbortSignal },
+  prompt: string,
+  { signal }: { signal?: AbortSignal }
 ) => {
-     const response = await Nvidia.streamText(prompt, { signal });
-     return response;
-};
+  const response = await Nvidia.streamText(prompt, { signal })
+  return response
+}

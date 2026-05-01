@@ -1,5 +1,6 @@
-import { z } from "zod";
-import { ApiError, StreamError } from "./error";
+import type { z } from "zod";
+
+import { ApiError, StreamError } from "../types/error.type";
 
 interface StreamResponse<T> {
      /** Validated + parsed request body that was sent */

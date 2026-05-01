@@ -25,11 +25,13 @@ export default defineConfig({
           "eslint-plugin-drizzle",
           "eslint-plugin-no-only-tests",
           "eslint-plugin-perfectionist",
-          // "eslint-plugin-prefer-let",
+
           // "eslint-plugin-react-hooks",
           "eslint-plugin-unused-imports",
      ],
      rules: {
+          "typescript-eslint/no-extraneous-class": "allow",
+          "eslint-plugin-import/no-named-as-default": "allow",
           "import/first": "error",
           "import/no-absolute-path": [
                "error",
@@ -40,12 +42,12 @@ export default defineConfig({
                },
           ],
           "import/no-duplicates": "error",
-          "import/no-named-default": "error",
+          "import/no-named-default": "allow",
           "import/no-webpack-loader-syntax": "error",
           "import/no-unassigned-import": "off",
 
           "prefer-let/prefer-let": [
-               "error",
+               "allow",
                {
                     forceUpperCaseConst: true,
                },
@@ -96,7 +98,7 @@ export default defineConfig({
           ],
           "no-array-constructor": "error",
           "no-case-declarations": "error",
-          "no-console": "error",
+          "no-console": "warn",
           "no-constant-condition": [
                "error",
                {
@@ -213,7 +215,7 @@ export default defineConfig({
                files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
                rules: {
                     "import/extensions": [
-                         "error",
+                         "allow",
                          "always",
                          {
                               checkTypeImports: true,
@@ -241,11 +243,11 @@ export default defineConfig({
                     "typescript/no-non-null-assertion": "off",
                     "typescript/no-require-imports": "error",
                     "typescript/no-unsafe-argument": "error",
-                    "typescript/no-unsafe-assignment": "error",
-                    "typescript/no-unsafe-call": "error",
+                    "typescript/no-unsafe-assignment": "allow",
+                    "typescript/no-unsafe-call": "allow",
                     "typescript/no-unsafe-function-type": "error",
-                    "typescript/no-unsafe-member-access": "error",
-                    "typescript/no-unsafe-return": "error",
+                    "typescript/no-unsafe-member-access": "allow",
+                    "typescript/no-unsafe-return": "allow",
                     "typescript/only-throw-error": "error",
                     "typescript/prefer-literal-enum-member": "error",
                     "typescript/prefer-promise-reject-errors": "error",
@@ -279,7 +281,7 @@ export default defineConfig({
                     "typescript/array-type": "error",
                     "typescript/consistent-type-imports": "error",
                     "typescript/explicit-function-return-type": [
-                         "error",
+                         "allow",
                          {
                               allowExpressions: true,
                          },

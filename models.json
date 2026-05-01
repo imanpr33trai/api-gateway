@@ -1,0 +1,2702 @@
+{
+  "models": [
+    {
+      "id": "01-ai/yi-large",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "01-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "abacusai/dracarys-llama-3.1-70b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "abacusai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "adept/fuyu-8b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "adept",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "ai21labs/jamba-1.5-large-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "ai21labs",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "aisingapore/sea-lion-7b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "aisingapore",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "baai/bge-m3",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "baai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "bigcode/starcoder2-15b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "bigcode",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "bytedance/seed-oss-36b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "bytedance",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "databricks/dbrx-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "databricks",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-coder-6.7b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v3.1-terminus",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v3.2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v4-flash",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v4-flash",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v4-pro",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "deepseek-ai/deepseek-v4-pro",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "deepseek-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/codegemma-1.1-7b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/codegemma-7b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/deplot",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-2-2b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-2b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-3n-e2b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-3n-e4b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/gemma-4-31b-it",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "google/recurrentgemma-2b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "google",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "ibm/granite-3.0-3b-a800m-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "ibm",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "ibm/granite-3.0-8b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "ibm",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "ibm/granite-34b-code-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "ibm",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "ibm/granite-8b-code-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "ibm",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/codellama-70b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.1-405b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.1-70b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.1-8b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.2-11b-vision-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.2-1b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.2-3b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.2-90b-vision-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-3.3-70b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-4-maverick-17b-128e-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama-guard-4-12b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "meta/llama2-70b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "meta",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "microsoft/kosmos-2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "microsoft",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "microsoft/phi-3-vision-128k-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "microsoft",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "microsoft/phi-3.5-moe-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "microsoft",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "microsoft/phi-4-mini-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "microsoft",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "microsoft/phi-4-multimodal-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "microsoft",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "minimaxai/minimax-m2.5",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "minimaxai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "minimaxai/minimax-m2.7",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "minimaxai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/codestral-22b-instruct-v0.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/devstral-2-123b-instruct-2512",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/magistral-small-2506",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/ministral-14b-instruct-2512",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-7b-instruct-v0.3",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-large",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-large-2-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-large-3-675b-instruct-2512",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-medium-3-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-medium-3.5-128b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-nemotron",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mistral-small-4-119b-2603",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mixtral-8x22b-instruct-v0.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mixtral-8x22b-v0.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "mistralai/mixtral-8x7b-instruct-v0.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "moonshotai/kimi-k2-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "moonshotai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "moonshotai/kimi-k2-instruct-0905",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "moonshotai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "moonshotai/kimi-k2-thinking",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "moonshotai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "moonshotai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nv-mistralai/mistral-nemo-12b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nv-mistralai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/ai-synthetic-video-detector",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/cosmos-reason2-8b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/embed-qa-4",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/gliner-pii",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/ising-calibration-1-35b-a3b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemoguard-8b-content-safety",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemoguard-8b-topic-control",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-51b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-nano-8b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.2-nemoretriever-300m-embed-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.2-nv-embedqa-1b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.2-nv-embedqa-1b-v2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.3-nemotron-super-49b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-nemotron-embed-1b-v2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama-nemotron-embed-vl-1b-v2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/llama3-chatqa-1.5-70b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/mistral-nemo-minitron-8b-8k-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemoretriever-parse",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-content-safety",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-4-340b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-4-340b-reward",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-content-safety-reasoning-4b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-mini-4b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-nano-12b-v2-vl",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-nano-3-30b-a3b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-parse",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/neva-22b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nv-embed-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nv-embedcode-7b-v1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nv-embedqa-e5-v5",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nv-embedqa-mistral-7b-v2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nvclip",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/nvidia-nemotron-nano-9b-v2",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/riva-translate-4b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/riva-translate-4b-instruct-v1.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "nvidia/vila",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "nvidia",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "openai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "openai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "openai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "openai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen2.5-coder-32b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen3-coder-480b-a35b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-122b-a10b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen/qwen3.5-397b-a17b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "sarvamai/sarvam-m",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "sarvamai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "snowflake/arctic-embed-l",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "snowflake",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "stepfun-ai/step-3.5-flash",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "stepfun-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "stockmark/stockmark-2-100b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "stockmark",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "upstage/solar-10.7b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "upstage",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "writer/palmyra-creative-122b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "writer",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "writer/palmyra-fin-70b-32k",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "writer",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "writer/palmyra-med-70b",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "writer",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "writer/palmyra-med-70b-32k",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "writer",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "z-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "z-ai/glm4.7",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "z-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "z-ai/glm5",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "z-ai",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "zyphra/zamba2-7b-instruct",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "zyphra",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "id": "qwen-gpu:latest",
+      "object": "model",
+      "created": 735790403,
+      "owned_by": "qwen",
+      "name": "qwen-gpu:latest",
+      "model": "qwen-gpu:latest",
+      "modified_at": "2026-04-08T09:21:03.630683651+05:30",
+      "size": 522653781,
+      "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": ["qwen3"],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}

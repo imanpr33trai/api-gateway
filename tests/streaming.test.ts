@@ -1,46 +1,47 @@
 // tests/streaming.test.ts
-import { describe, expect, test } from "bun:test";
-import { Hono } from "hono";
-import { chatRoute } from "../src/routes/chat";
+import { describe, expect, test } from 'bun:test'
+import { Hono } from 'hono'
 
-const app = new Hono();
-app.route("/", chatRoute);
+import { chatRoute } from '../src/routes/chat'
 
-describe("Chat Stream Endpoint Test", () => {
-     test("should stream and log content chunks", async () => {
-          const res = await app.request("/chat/stream", {
-               method: "POST",
-               body: JSON.stringify({
-                    prompt: "Hello, how are you?",
-               }),
-               headers: { "Content-Type": "application/json" },
-          });
+const app = new Hono()
+app.route('/', chatRoute)
 
-          console.log("Response Status :", res.status);
-          expect(res.status).toBe(200);
-          expect(res.body).not.toBeNull();
+describe('Chat Stream Endpoint Test', () => {
+  test('should stream and log content chunks', async () => {
+    const res = await app.request('/chat/stream', {
+      method: 'POST',
+      body: JSON.stringify({
+        prompt: 'Hello, how are you?'
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    })
 
-          const reader = res.body!.getReader();
-          const decoder = new TextDecoder();
-          const chunks: string[] = [];
+    console.log('Response Status :', res.status)
+    expect(res.status).toBe(200)
+    expect(res.body).not.toBeNull()
 
-          console.log("\n── Stream output ──────────────────────────");
+    const reader = res.body!.getReader()
+    const decoder = new TextDecoder()
+    const chunks: string[] = []
 
-          while (true) {
-               const { done, value } = await reader.read();
-               if (done) break;
-               const text = decoder.decode(value, { stream: true });
-               if (text) {
-                    chunks.push(text);
-                    process.stdout.write(text);
-               }
-          }
+    console.log('\n── Stream output ──────────────────────────')
 
-          console.log("\n── End of stream ──────────────────────────");
-          console.log("Total chunks  :", chunks.length);
-          console.log("Full response :", chunks.join(""));
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      const text = decoder.decode(value, { stream: true })
+      if (text) {
+        chunks.push(text)
+        process.stdout.write(text)
+      }
+    }
 
-          expect(chunks.length).toBeGreaterThan(0);
-          expect(chunks.join("").length).toBeGreaterThan(0);
-     });
-});
+    console.log('\n── End of stream ──────────────────────────')
+    console.log('Total chunks  :', chunks.length)
+    console.log('Full response :', chunks.join(''))
+
+    expect(chunks.length).toBeGreaterThan(0)
+    expect(chunks.join('').length).toBeGreaterThan(0)
+  })
+})
