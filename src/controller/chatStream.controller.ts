@@ -1,66 +1,72 @@
 import type { Context } from "hono";
-import { stream } from "hono/streaming";
-
-import { chatStreamService } from "../services/chatStream.service";
-import { ConversationService } from "../services/conversation.service";
-import { ChatRequestSchema } from "../types/types";
-import { parseSSEStream } from "../utils/parseChunk";
+import z from "zod";
+import { ChatCompletionRequestSchema } from "../providers/types";
+import { chatCompletionStream } from "../services/chat.service";
+import { ValidationError } from "../types/error.type";
 
 export const chatStreamController = async (c: Context) => {
-     const payload = await c.req.json();
-     const parsed = ChatRequestSchema.parse(payload);
+     try {
+          const body = await c.req.json();
+          const parsed = ChatCompletionRequestSchema.parse(body);
 
-     if (parsed.conversationId) {
-          const title =
-               parsed.messages[0]?.content?.substring(0, 50) ??
-               "New Conversation";
-          await ConversationService.getOrCreateConversation(
-               parsed.conversationId,
-               title,
-          );
+          const providerResponse = await chatCompletionStream({
+               ...parsed,
+               stream: true,
+          });
 
-          await ConversationService.saveMessage(
-               parsed.conversationId,
-               "user",
-               parsed.messages.at(-1)!.content ?? "",
-               `msg-${Date.now()}`,
-               parsed.model,
-          );
-     }
-
-     const fullPrompt = parsed.messages.map((m) => m.content).join("\n");
-
-     const ac = new AbortController();
-     c.req.raw.signal.addEventListener("abort", () => ac.abort());
-
-     const sseResponse = await chatStreamService(fullPrompt, {
-          signal: ac.signal,
-     });
-
-     return stream(c, async (stream) => {
-          try {
-               const assistantChunks: string[] = [];
-
-               for await (const chunk of parseSSEStream(sseResponse)) {
-                    if (chunk.isDone) break;
-                    await stream.write(chunk.content);
-
-                    assistantChunks.push(chunk.content);
-               }
-               if (parsed.conversationId) {
-                    await ConversationService.saveMessage(
-                         parsed.conversationId,
-                         "assistant",
-                         assistantChunks.join(""),
-                         `resp-${Date.now()}`,
-                         parsed.model,
-                    );
-               }
-          } catch (error) {
-               console.error("Streaming error:", error);
-               await stream.write(
-                    `data: ${JSON.stringify({ error: String(error) })}\n\n`,
-               );
+          if (!providerResponse.body) {
+               return c.text("Upstream provider did not return a stream", 500);
           }
-     });
+          const reader = providerResponse.body.getReader();
+
+          const abortController = new AbortController();
+
+          c.req.raw.signal.addEventListener("abort", () => {
+               abortController.abort();
+               reader.cancel().catch(() => {});
+          });
+
+          const stream = new ReadableStream({
+               async pull(controller) {
+                    try {
+                         const { done, value } = await reader.read();
+                         if (done) {
+                              controller.close();
+                              return;
+                         }
+                         controller.enqueue(value);
+                    } catch (error) {
+                         if (abortController.signal.aborted) {
+                              controller.close();
+                         } else {
+                              controller.error(error);
+                         }
+                    }
+               },
+               cancel() {
+                    reader.cancel().catch(() => {});
+                    abortController.abort();
+               },
+          });
+
+          const contentType =
+               providerResponse.headers.get("content-type") ??
+               "text/event-stream";
+
+          return new Response(stream, {
+               status: 200,
+               headers: {
+                    "Content-Type": contentType,
+                    "Cache-Control": "no-cache",
+                    "X-Content-Type-Options": "nosniff",
+               },
+          });
+     } catch (err) {
+          if (err instanceof z.ZodError) {
+               throw new ValidationError("Invalid request body", {
+                    issues: err.issues,
+               });
+          }
+          throw err;
+     }
 };

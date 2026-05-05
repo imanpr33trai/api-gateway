@@ -1,8 +1,8 @@
 {
   "models": [
     {
-      "name": "qwen-gpu:latest",
-      "model": "qwen-gpu:latest",
+      "name": "gpt-oss:20b",
+      "model": "gpt-oss:20b",
       "modified_at": "2026-04-08T09:21:03.630683651+05:30",
       "size": 522653781,
       "digest": "ac21f9f3a5f96ff1844388f5435e474362cc8e9dcc5f36f54ec481e96d88effb",

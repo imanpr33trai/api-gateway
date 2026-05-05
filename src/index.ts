@@ -1,44 +1,16 @@
 import { Hono } from "hono";
-
+import { logger } from "hono/logger";
 import { errorHandlingMiddleware } from "./middleware/error.middleware";
 import { chatRoute } from "./routes/chat";
 import { modelsRoute } from "./routes/models";
+import { responsesRoute } from "./routes/responses";
 
-const app = new Hono();
-app.get("/v1");
-app.use("*", errorHandlingMiddleware);
-app.route("/", chatRoute);
-app.route("/v1/models", modelsRoute);
+const app = new Hono().use(logger()).use("*", errorHandlingMiddleware);
 
-app.use("*", async (c, next) => {
-     const start = performance.now();
-     await next();
-     const end = performance.now();
-     console.log(
-          `[${c.req.method}] ${c.req.path} - ${c.res.status} (${Math.round(end - start)}ms)`,
-     );
-});
-// Add this in src/index.ts
-// app.use("*", async (c, next) => {
-//      const start = performance.now();
-//      await next();
-//      const end = performance.now();
-//      console.log(
-//           `[${c.req.method}] ${c.req.path} - ${c.res.status} (${Math.round(end - start)}ms)`,
-// // //      );
-// // });
-// // Add this in src/index.ts
-// app.onError((err, c) => {
-//      console.error("🔥 Error:", err);
-//      return c.json(
-//           {
-//                error: err.message || "Internal Server Error",
-//           },
-//           500,
-//      );
-// });
+app.basePath("/v1").route("/", modelsRoute).route("/", responsesRoute);
+app.basePath("/api").route("/", chatRoute);
 
 export default {
-     port: 11434,
+     // port: 11434,
      fetch: app.fetch,
 };
