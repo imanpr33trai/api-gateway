@@ -1,60 +1,109 @@
+// src/controller/responses.controller.ts
 import type { Context } from "hono";
-import { CodexRequestSchema, responseCompletionStream } from "../services/response.service";
+import { z } from "zod";
+import {
+     responseCompletion,
+     responseCompletionStream,
+} from "../services/response.service";
+import { ValidationError } from "../types/error.type";
+import { ResponsesRequestSchema } from "../types/responses";
+import { handleAsync } from "../utils/errorHandler";
 
 export const responsesController = async (c: Context) => {
-     const body = await c.req.json();
-     const parsed = CodexRequestSchema.safeParse(body);
-
-     if (!parsed.success) {
-          return c.json(
-               {
-                    error: {
-                         message: "Invalid request body",
-                         type: "invalid_request_error",
-                         param: null,
-                         code: "invalid_body",
-                         details: parsed.error.errors,
-                    },
-               },
-               400,
-          );
-     }
-
-     const req = parsed.data;
-
      try {
-          const response = await responseCompletionStream(req);
+          const body = await c.req.json();
 
-          if (!response.ok) {
-               const errorBody = await response.text().catch(() => "");
-               return c.json(
-                    {
-                         error: {
-                              message: `Provider error: ${response.status} - ${errorBody}`,
-                              type: "provider_error",
-                              code: "provider_error",
-                         },
-                    },
-                    response.status,
+          // Debug: Log the incoming request
+          console.log("Incoming request body:", JSON.stringify(body, null, 2));
+
+          const parsed = ResponsesRequestSchema.safeParse(body);
+
+          if (!parsed.success) {
+               console.error(
+                    "Validation errors:",
+                    JSON.stringify(parsed.error.issues, null, 2),
                );
+               throw new ValidationError("Invalid request body", {
+                    issues: parsed.error.issues,
+               });
           }
 
-          // Stream the response back to client
-          return c.body(response.body, 200, {
-               "Content-Type": "text/event-stream",
-               "Cache-Control": "no-cache",
-               Connection: "keep-alive",
-          });
-     } catch (error) {
-          return c.json(
-               {
-                    error: {
-                         message: error instanceof Error ? error.message : "Internal server error",
-                         type: "internal_error",
-                         code: "internal_error",
+          // Streaming
+          if (parsed.data.stream) {
+               const providerResponse = await responseCompletionStream({
+                    ...parsed.data,
+                    stream: true,
+               });
+
+               if (!providerResponse) {
+                    return c.text(
+                         "Upstream provider did not return a stream",
+                         500,
+                    );
+               }
+
+               const reader = providerResponse.getReader();
+               const abortController = new AbortController();
+
+               c.req.raw.signal.addEventListener("abort", () => {
+                    abortController.abort();
+                    reader.cancel().catch(() => {});
+               });
+
+               const stream = new ReadableStream({
+                    async pull(controller) {
+                         try {
+                              const { done, value } = await reader.read();
+                              if (done) {
+                                   controller.close();
+                                   return;
+                              }
+                              controller.enqueue(value);
+                         } catch (error) {
+                              if (abortController.signal.aborted) {
+                                   controller.close();
+                              } else {
+                                   controller.error(error);
+                              }
+                         }
                     },
-               },
-               500,
+                    cancel() {
+                         reader.cancel().catch(() => {});
+                         abortController.abort();
+                    },
+               });
+
+               // Responses API streaming uses standard SSE with event types
+               const contentType =
+                    c.req.header("content-type") ?? "text/event-stream";
+
+               return new Response(stream, {
+                    status: 200,
+                    headers: {
+                         "Content-Type": contentType,
+                         "Cache-Control": "no-cache",
+                         "X-Content-Type-Options": "nosniff",
+                    },
+               });
+          }
+
+          // Non‑streaming
+          const [result, error] = await handleAsync(
+               responseCompletion(parsed.data),
           );
-     }
+          if (error) throw error;
+          return c.json(result);
+} catch (err) {
+           if (err instanceof z.ZodError) {
+                const formattedIssues = err.issues.map((issue) => ({
+                     path: issue.path.join("."),
+                     message: issue.message,
+                }));
+                throw new ValidationError("Invalid request body", {
+                     issues: formattedIssues,
+                     count: err.issues.length,
+                });
+           }
+           throw err;
+      }
 };
