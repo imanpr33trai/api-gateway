@@ -32,14 +32,7 @@ const ServiceTierEnum = z.enum([
      "scale",
      "priority",
 ]);
-const ReasoningEffortEnum = z.enum([
-     "none",
-     "minimal",
-     "low",
-     "medium",
-     "high",
-     "xhigh",
-]);
+const ReasoningEffortEnum = z.enum(["none", "low", "medium", "high", "max"]);
 
 const VerbosityEnum = z.enum(["low", "medium", "high"]);
 const SearchContextSizeEnum = z.enum(["low", "medium", "high"]);

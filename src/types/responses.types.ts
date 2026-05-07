@@ -2,7 +2,7 @@
 import { z } from "zod";
 
 // ── Enums ─────────────────────────────────────────────────────
-const RoleEnum = z.enum(["user", "system", "developer"]);
+const RoleEnum = z.enum(["user", "assistant", "system", "developer"]);
 const ContentTypeEnum = z.enum([
      "input_text",
      "input_image",
@@ -16,8 +16,10 @@ const InputItemTypeEnum = z.enum([
      "reasoning",
 ]);
 const OutputItemTypeEnum = z.enum(["message", "function_call", "reasoning"]);
-const ReasoningEffortEnum = z.enum(["none", "low", "medium", "high", "max"]);
-const TextFormatTypeEnum = z.enum(["text", "json_schema"]);
+const ReasoningEffortEnum = z.enum(["none", "low", "medium", "high"]);
+const SummaryTypeEnum = z.enum(["auto", "concise", "detailed"]);
+const TextFormatTypeEnum = z.enum(["text", "json_schema", "json_object"]);
+const VerbosityEnum = z.enum(["low", "medium", "high"]);
 const TruncationEnum = z.enum(["auto", "disabled"]);
 const ServiceTierEnum = z.enum([
      "auto",
@@ -26,6 +28,16 @@ const ServiceTierEnum = z.enum([
      "scale",
      "priority",
 ]);
+const PromptCacheRetentionEnum = z.enum(["in_memory", "24h"]);
+const ResponseStatusEnum = z.enum([
+     "completed",
+     "failed",
+     "in_progress",
+     "cancelled",
+     "queued",
+     "incomplete",
+]);
+const ItemStatusEnum = z.enum(["in_progress", "completed", "incomplete"]);
 
 // ── Content Parts ─────────────────────────────────────────────
 const ResponsesTextContentSchema = z.object({
@@ -131,46 +143,115 @@ const ResponsesTextFormatSchema = z.object({
 type ResponsesTextFormat = z.infer<typeof ResponsesTextFormatSchema>;
 
 const ResponsesToolSchema = z.object({
-     type: z.literal("function"),
-     name: z.string(),
+     type: z.string(),
+     name: z.string().optional(),
      description: z.string().nullable().optional(),
      strict: z.boolean().nullable().optional(),
-     parameters: z.record(z.string(), z.unknown()).optional(),
+     parameters: z.record(z.string(), z.unknown()).nullable().optional(),
 });
 type ResponsesTool = z.infer<typeof ResponsesToolSchema>;
 
 // ── Request ───────────────────────────────────────────────────
 const ResponsesRequestSchema = z.object({
      model: z.string(),
-     background: z.boolean().optional().default(false),
-     conversation: z.unknown().optional(), // not supported, but we accept anything
+     background: z.boolean().optional(),
+     context_management: z
+          .array(
+               z.object({
+                    type: z.string(),
+                    compact_threshold: z.number().optional(),
+               }),
+          )
+          .optional(),
+     conversation: z
+          .union([z.string(), z.object({ id: z.string() })])
+          .optional(),
      include: z.array(z.string()).optional(),
      input: z.union([z.string(), z.array(ResponsesInputItemSchema)]),
      instructions: z.string().optional(),
-     max_output_tokens: z.number().int().positive().optional(),
-     reasoning: ResponsesReasoningSchema.optional().default({}),
-     temperature: z.number().min(0).max(2).optional(),
+     max_output_tokens: z.number().optional(),
+     max_tool_calls: z.number().optional(),
+     metadata: z.record(z.string(), z.string()).optional(),
+     parallel_tool_calls: z.boolean().optional(),
+     previous_response_id: z.string().optional(),
+     prompt: z
+          .object({
+               id: z.string(),
+               variables: z
+                    .record(z.string(), z.union([z.string(), z.unknown()]))
+                    .optional(),
+               version: z.string().optional(),
+          })
+          .optional(),
+     prompt_cache_key: z.string().optional(),
+     prompt_cache_retention: PromptCacheRetentionEnum.optional(),
+     reasoning: ResponsesReasoningSchema.optional().nullable(),
+     safety_identifier: z.string().optional(),
+     service_tier: ServiceTierEnum.optional(),
+     store: z.boolean().optional(),
+     stream: z.boolean().optional(),
+     stream_options: z
+          .object({
+               include_obfuscation: z.boolean().optional(),
+          })
+          .optional(),
+     temperature: z.number().optional(),
      text: z
           .object({
                format: ResponsesTextFormatSchema.optional(),
+               verbosity: VerbosityEnum.optional(),
           })
           .optional(),
-     top_p: z.number().min(0).max(1).optional(),
-     truncation: TruncationEnum.optional(),
+     tool_choice: z
+          .union([
+               z.enum(["none", "auto", "required"]),
+               z.object({
+                    type: z.literal("allowed_tools"),
+                    mode: z.enum(["auto", "required"]),
+                    tools: z.array(z.record(z.string(), z.unknown())),
+               }),
+               z.object({
+                    type: z.literal("function"),
+                    name: z.string(),
+               }),
+          ])
+          .optional(),
      tools: z.array(ResponsesToolSchema).optional(),
-     stream: z.boolean().optional().default(false),
+     top_logprobs: z.number().optional(),
+     top_p: z.number().optional(),
+     truncation: TruncationEnum.optional(),
+     user: z.string().optional(),
 });
 type ResponsesRequest = z.infer<typeof ResponsesRequestSchema>;
 
 // ── Response ──────────────────────────────────────────────────
 const ResponsesErrorSchema = z.object({
-     code: z.string(),
+     code: z.enum([
+          "server_error",
+          "rate_limit_exceeded",
+          "invalid_prompt",
+          "vector_store_timeout",
+          "invalid_image",
+          "invalid_image_format",
+          "invalid_base64_image",
+          "invalid_image_url",
+          "image_too_large",
+          "image_too_small",
+          "image_parse_error",
+          "image_content_policy_violation",
+          "invalid_image_mode",
+          "image_file_too_large",
+          "unsupported_image_media_type",
+          "empty_image_file",
+          "failed_to_download_image",
+          "image_file_not_found",
+     ]),
      message: z.string(),
 });
 type ResponsesError = z.infer<typeof ResponsesErrorSchema>;
 
 const ResponsesIncompleteDetailsSchema = z.object({
-     reason: z.string(),
+     reason: z.enum(["max_output_tokens", "content_filter"]),
 });
 type ResponsesIncompleteDetails = z.infer<
      typeof ResponsesIncompleteDetailsSchema
@@ -232,36 +313,68 @@ const ResponsesResponseSchema = z.object({
      id: z.string(),
      object: z.literal("response"),
      created_at: z.number(),
-     completed_at: z.number().nullable(),
-     status: z.string(),
-     incomplete_details: ResponsesIncompleteDetailsSchema.nullable().optional(),
+     completed_at: z.number().optional().nullable(),
+     status: ResponseStatusEnum.optional(),
+     incomplete_details: ResponsesIncompleteDetailsSchema.optional().nullable(),
+     instructions: z
+          .union([z.string(), z.array(ResponsesInputItemSchema)])
+          .optional()
+          .nullable(),
+     metadata: z.record(z.string(), z.string()).optional().nullable(),
      model: z.string(),
-     previous_response_id: z.string().nullable().optional(),
-     instructions: z.string().nullable().optional(),
-     output: z.array(ResponsesOutputItemSchema),
-     error: ResponsesErrorSchema.nullable().optional(),
-     tools: z.array(ResponsesToolSchema),
-     tool_choice: z.unknown(),
-     truncation: z.string(),
-     parallel_tool_calls: z.boolean(),
-     text: z.object({
-          format: ResponsesTextFormatSchema,
-     }),
-     top_p: z.number(),
-     presence_penalty: z.number(),
-     frequency_penalty: z.number(),
-     top_logprobs: z.number().int(),
-     temperature: z.number(),
-     reasoning: ResponsesReasoningOutputSchema.nullable().optional(),
-     usage: ResponsesUsageSchema.nullable().optional(),
-     max_output_tokens: z.number().int().nullable().optional(),
-     max_tool_calls: z.number().int().nullable().optional(),
-     store: z.boolean(),
-     background: z.boolean(),
-     service_tier: ServiceTierEnum,
-     metadata: z.record(z.string(), z.unknown()),
-     safety_identifier: z.string().nullable().optional(),
-     prompt_cache_key: z.string().nullable().optional(),
+     output: z.array(ResponsesOutputItemSchema).optional(),
+     parallel_tool_calls: z.boolean().optional(),
+     temperature: z.number().optional(),
+     tool_choice: z
+          .union([
+               z.enum(["none", "auto", "required"]),
+               z.object({
+                    type: z.literal("allowed_tools"),
+                    mode: z.enum(["auto", "required"]).optional(),
+                    tools: z
+                         .array(z.record(z.string(), z.unknown()))
+                         .optional(),
+               }),
+               z.object({
+                    type: z.literal("function"),
+                    name: z.string(),
+               }),
+          ])
+          .optional()
+          .nullable(),
+     tools: z.array(ResponsesToolSchema).optional(),
+     top_p: z.number().optional(),
+     background: z.boolean().optional().nullable(),
+     conversation: z.object({ id: z.string() }).optional().nullable(),
+     max_output_tokens: z.number().optional().nullable(),
+     max_tool_calls: z.number().optional().nullable(),
+     output_text: z.string().optional().nullable(),
+     previous_response_id: z.string().optional().nullable(),
+     prompt: z
+          .object({
+               id: z.string(),
+               variables: z.record(z.string(), z.unknown()).optional(),
+               version: z.string().optional(),
+          })
+          .optional()
+          .nullable(),
+     prompt_cache_key: z.string().optional().nullable(),
+     prompt_cache_retention: PromptCacheRetentionEnum.optional().nullable(),
+     reasoning: ResponsesReasoningOutputSchema.optional().nullable(),
+     safety_identifier: z.string().optional().nullable(),
+     service_tier: ServiceTierEnum.optional().nullable(),
+     text: z
+          .object({
+               format: ResponsesTextFormatSchema.optional(),
+               verbosity: VerbosityEnum.optional(),
+          })
+          .optional()
+          .nullable(),
+     top_logprobs: z.number().optional().nullable(),
+     truncation: TruncationEnum.optional().nullable(),
+     usage: ResponsesUsageSchema.optional().nullable(),
+     user: z.string().optional().nullable(),
+     error: ResponsesErrorSchema.optional().nullable(),
 });
 type ResponsesResponse = z.infer<typeof ResponsesResponseSchema>;
 

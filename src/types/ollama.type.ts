@@ -95,6 +95,7 @@ export const MessageSchema = z.object({
           .optional(),
      tool_calls: z.array(z.lazy(() => ToolCallSchema)).optional(),
      tool_name: z.string().optional(),
+     tool_call_id: z.string().optional(),
 });
 
 export const ToolCallSchema = z.object({

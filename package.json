@@ -4,7 +4,7 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "dev": "bun run src/index.ts",
+    "dev": "bun --hot run src/index.ts",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix"
   },
