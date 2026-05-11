@@ -144,7 +144,7 @@ function responsesToOllamaChatRequest(req: ResponsesRequest): {
                     messages.push({
                          role: "assistant",
                          content: "",
-                         thinking: item.encrypted_content ?? item.content ?? "",
+                         thinking: item.encrypted_content ?? "",
                     });
                     break;
                }

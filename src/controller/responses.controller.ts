@@ -93,17 +93,17 @@ export const responsesController = async (c: Context) => {
           );
           if (error) throw error;
           return c.json(result);
-} catch (err) {
-           if (err instanceof z.ZodError) {
-                const formattedIssues = err.issues.map((issue) => ({
-                     path: issue.path.join("."),
-                     message: issue.message,
-                }));
-                throw new ValidationError("Invalid request body", {
-                     issues: formattedIssues,
-                     count: err.issues.length,
-                });
-           }
-           throw err;
-      }
+     } catch (err) {
+          if (err instanceof z.ZodError) {
+               const formattedIssues = err.issues.map((issue) => ({
+                    path: issue.path.join("."),
+                    message: issue.message,
+               }));
+               throw new ValidationError("Invalid request body", {
+                    issues: formattedIssues,
+                    count: err.issues.length,
+               });
+          }
+          throw err;
+     }
 };
