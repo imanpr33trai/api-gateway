@@ -1,15 +1,8 @@
 // src/types/index.ts
-// Main type exports - unified type definitions for the project
+// Re-exports for convenient imports
 
-// Common types (shared across APIs) - re-exported from individual modules
-export * from './common'
+// API schemas and types
+export * from './api'
 
-// Chat Completions API types
-export * from './chat'
-
-// Responses API types
-export * from './responses'
-
-// Ollama-specific types
-
-// Note: Provider-specific types are in src/providers/
+// Error types
+export * from './errors'

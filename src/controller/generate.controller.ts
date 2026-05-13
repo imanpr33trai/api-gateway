@@ -3,7 +3,7 @@ import type { Context } from 'hono'
 import { z } from 'zod'
 
 import { generateCompletionService } from '../services/chat.service'
-import { ValidationError } from '../types/error.type'
+import { ValidationError } from '../types'
 import { handleAsync } from '../utils/errorHandler'
 
 const GenerateRequestSchema = z.object({

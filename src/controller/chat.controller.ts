@@ -2,12 +2,11 @@
 import type { Context } from 'hono'
 import { z } from 'zod'
 
-import { ChatCompletionRequestSchema } from '../providers/types'
 import {
   chatCompletionService,
   chatCompletionStreamService
 } from '../services/chat.service'
-import { ValidationError } from '../types/error.type'
+import { ChatCompletionRequestSchema, ValidationError } from '../types'
 import { handleAsync } from '../utils/errorHandler'
 
 export const chatController = async (c: Context) => {

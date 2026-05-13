@@ -1,6 +1,6 @@
 import type { z } from 'zod'
 
-import { ApiError, StreamError } from '../types/error.type'
+import { ApiError, StreamError } from '../types'
 
 interface StreamResponse<T> {
   /** Validated + parsed request body that was sent */
@@ -16,7 +16,7 @@ interface StreamResponse<T> {
  * TSchema: The Zod schema for the request body.
  * TResponse: The expected TypeScript interface for the response.
  */
-export async function postStreaming<TSchema extends z.ZodTypeAny>(
+export async function postStreaming<TSchema extends z.ZodType>(
   url: string,
   requestSchema: TSchema,
   body: z.input<TSchema>, // accepts the *pre-parse* shape

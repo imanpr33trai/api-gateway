@@ -3,7 +3,7 @@ import { Nvidia } from '../providers/nvidia'
 import {
   ChatCompletionRequestSchema,
   type ChatCompletionRequest
-} from '../providers/types'
+} from '../types'
 
 /**
  * Non‑streaming chat completion.

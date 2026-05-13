@@ -1,4 +1,4 @@
-import { type ChatCompletionRequest } from './types'
+import type { ChatCompletionRequest } from '../types'
 
 const BASE_URL = 'https://integrate.api.nvidia.com/v1'
 

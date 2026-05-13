@@ -1,4 +1,4 @@
-import { AppError, isAppError } from '../types/error.type'
+import { AppError, isAppError } from '../types'
 
 // Error handler for async operations
 export async function handleAsync<T>(

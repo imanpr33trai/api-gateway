@@ -1,6 +1,7 @@
 // src/controllers/models-controller.ts
 import type { Context } from 'hono'
 
+import { ZodError } from 'zod'
 import { Nvidia } from '../providers/nvidia'
 
 export class ModelsController {
@@ -9,8 +10,9 @@ export class ModelsController {
       const nvidiaResp = await Nvidia.getAllModels()
       const data = await nvidiaResp.json()
       return c.json(data)
-    } catch (error: any) {
-      console.error('ModelsController error:', error)
+    } catch (error) {
+      if(error instanceof ZodError){
+
       return c.json(
         {
           object: 'list',
@@ -18,6 +20,15 @@ export class ModelsController {
           error: { message: error.message }
         },
         500
+      )
+      }
+
+      return c.json(
+        {
+          object:'list',
+          data:[],
+          error
+        }
       )
     }
   }

@@ -4,4 +4,4 @@ import { ModelsController } from '../controller/models.controller'
 
 export const modelsRoute = new Hono()
 
-modelsRoute.get('/models', new ModelsController().listModels)
+modelsRoute.get('/v1/models', new ModelsController().listModels)

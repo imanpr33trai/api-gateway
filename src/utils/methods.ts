@@ -1,8 +1,6 @@
 import type { BodyInit, HeadersInit } from 'bun'
 import z from 'zod'
 
-import { fetchWithHeaders } from './utils'
-
 type Fetch = typeof globalThis.fetch
 
 interface RequestOptions {
@@ -122,7 +120,7 @@ export const del = async <TIn extends z.ZodType, TOut extends z.ZodType>(
 
 // ─── parseJSON ────────────────────────────────────────────────────────────────
 
-export const parseJSON = async function* <TOut extends z.ZodTypeAny>(
+export const parseJSON = async function* <TOut extends z.ZodType>(
   itr: ReadableStream<Uint8Array>,
   schema: TOut
 ): AsyncGenerator<z.output<TOut>> {

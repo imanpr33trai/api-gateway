@@ -25,14 +25,14 @@ app.get('/health', c => {
 })
 
 // Models endpoint
-app.route('/v1/models', modelsRoute)
+app.route('/', modelsRoute)
 
 // Chat Completions API (OpenAI-compatible pass-through)
 app.post('/v1/chat/completions', chatController)
 
 // ============ Error Handling ============
 app.onError((err, c) => {
-  console.error('Unhandled error:', err)
+
   return c.json(
     {
       id: 'resp_error',
@@ -45,6 +45,6 @@ app.onError((err, c) => {
 })
 
 export default {
-  port: parseInt(process.env.PORT || '11434', 10),
+  port: parseInt(process.env.PORT || '8000', 10),
   fetch: app.fetch
 }
