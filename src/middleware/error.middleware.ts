@@ -6,7 +6,7 @@ import { handleErrorResponse } from '../utils/errorHandler'
 export async function errorHandlingMiddleware(c: Context, next: Next) {
   try {
     await next()
-  } catch (error: Error) {
+  } catch (error: unknown) {
     console.error('Error caught in middleware:', error)
 
     // Use the global error handler

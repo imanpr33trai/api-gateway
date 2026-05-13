@@ -70,6 +70,6 @@ export class StreamError extends AppError {
 }
 
 // Type guard to check if an error is an AppError
-export function isAppError(error: Error): error is AppError {
+export function isAppError(error: unknown): error is AppError {
   return error instanceof AppError
 }

@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { AppError, isAppError } from '../types'
 
 // Error handler for async operations
@@ -7,20 +8,19 @@ export async function handleAsync<T>(
   try {
     const data = await promise
     return [data, null]
-  } catch (error: Error | AppError) {
-    // If it's already an AppError, return it as-is
+  } catch (error: unknown) {
     if (isAppError(error)) {
       return [null, error]
     }
 
-    // Otherwise, wrap it in a generic AppError
-    const appError = new AppError(
-      'UNKNOWN_ERROR',
-      error.message || 'An unknown error occurred',
-      { originalError: error }
-    )
+    // Handle ZodError specially
+    if (error instanceof z.ZodError) {
+      return [null, new AppError('VALIDATION_ERROR', error.message, { issues: error.issues })]
+    }
 
-    return [null, appError]
+    // Otherwise, wrap it in a generic AppError
+    const message = error instanceof Error ? error.message : 'An unknown error occurred'
+    return [null, new AppError('UNKNOWN_ERROR', message, { originalError: error })]
   }
 }
 
@@ -29,25 +29,25 @@ export function handleSync<T>(fn: () => T): [T, null] | [null, AppError] {
   try {
     const data = fn()
     return [data, null]
-  } catch (error: Error | AppError) {
+  } catch (error: unknown) {
     // If it's already an AppError, return it as-is
     if (isAppError(error)) {
       return [null, error]
     }
 
-    // Otherwise, wrap it in a generic AppError
-    const appError = new AppError(
-      'UNKNOWN_ERROR',
-      error.message || 'An unknown error occurred',
-      { originalError: error }
-    )
+    // Handle ZodError specially
+    if (error instanceof z.ZodError) {
+      return [null, new AppError('VALIDATION_ERROR', error.message, { issues: error.issues })]
+    }
 
-    return [null, appError]
+    // Otherwise, wrap it in a generic AppError
+    const message = error instanceof Error ? error.message : 'An unknown error occurred'
+    return [null, new AppError('UNKNOWN_ERROR', message, { originalError: error })]
   }
 }
 
 // Global error response handler for Hono
-export function handleErrorResponse(error: Error | AppError) {
+export function handleErrorResponse(error: unknown) {
   // If it's already an AppError, use its properties
   if (isAppError(error)) {
     return {
@@ -61,11 +61,12 @@ export function handleErrorResponse(error: Error | AppError) {
   }
 
   // For unexpected errors, create a generic error response
+  const message = error instanceof Error ? error.message : 'An unexpected error occurred'
   return {
     success: false,
     error: {
       code: 'UNKNOWN_ERROR',
-      message: error.message || 'An unexpected error occurred'
+      message
     }
   }
 }
