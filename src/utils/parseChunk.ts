@@ -1,4 +1,4 @@
-import { StreamChunkSchema, type ParsedChunk } from '../types/types'
+import { StreamChunkSchema, type ParsedChunk } from '../types'
 
 export const parseSSEChunk = (raw: string): ParsedChunk | null => {
   const line = raw.trim()
@@ -33,7 +33,7 @@ export const parseSSEChunk = (raw: string): ParsedChunk | null => {
       finish_reason: firstChoice?.finish_reason ?? null,
       role: firstChoice?.delta.role
     }
-  } catch (error) {
+  } catch {
     return null // malformed chunk — skip, don't crash the stream
   }
 }
@@ -41,7 +41,7 @@ export const parseSSEChunk = (raw: string): ParsedChunk | null => {
 const decoder = new TextDecoder()
 
 export const parseSSEStream = (
-  raw: ReadableStream<Uint8Array>
+  raw: ReadableStream
 ): AsyncGenerator<ParsedChunk> => {
   const reader = raw
     .pipeThrough(
@@ -82,9 +82,7 @@ function splitLines(): TransformStream<string, string> {
 
       buffer = messages.pop() ?? ''
       for (const line of messages) {
-        const dataLine = line
-          .split(/\r?\n/)
-          .find(line => line.startsWith('data: '))
+        const dataLine = line.split(/\r?\n/).find(l => l.startsWith('data: '))
         if (dataLine) controller.enqueue(dataLine)
       }
     },

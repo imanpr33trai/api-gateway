@@ -1,44 +1,47 @@
-import { Hono } from "hono";
+// src/index.ts
+import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+import { logger } from 'hono/logger'
 
-import { errorHandlingMiddleware } from "./middleware/error.middleware";
-import { chatRoute } from "./routes/chat";
-import { modelsRoute } from "./routes/models";
+import { chatController } from './controller/chat.controller'
+import { modelsRoute } from './routes/models'
 
-const app = new Hono();
-app.get("/v1");
-app.use("*", errorHandlingMiddleware);
-app.route("/", chatRoute);
-app.route("/v1/models", modelsRoute);
+const app = new Hono()
 
-app.use("*", async (c, next) => {
-     const start = performance.now();
-     await next();
-     const end = performance.now();
-     console.log(
-          `[${c.req.method}] ${c.req.path} - ${c.res.status} (${Math.round(end - start)}ms)`,
-     );
-});
-// Add this in src/index.ts
-// app.use("*", async (c, next) => {
-//      const start = performance.now();
-//      await next();
-//      const end = performance.now();
-//      console.log(
-//           `[${c.req.method}] ${c.req.path} - ${c.res.status} (${Math.round(end - start)}ms)`,
-// // //      );
-// // });
-// // Add this in src/index.ts
-// app.onError((err, c) => {
-//      console.error("🔥 Error:", err);
-//      return c.json(
-//           {
-//                error: err.message || "Internal Server Error",
-//           },
-//           500,
-//      );
-// });
+// Middleware
+app.use('*', cors())
+app.use('*', logger())
 
-export default {
-     port: 11434,
-     fetch: app.fetch,
-};
+// ============ Routes ============
+
+// Health check
+app.get('/health', c => {
+  return c.json({
+    status: 'ok',
+    version: '1.0.0',
+    providers: ['nvidia'],
+    default_model: 'openai/gpt-oss-120b'
+  })
+})
+
+// Models endpoint
+app.route('/', modelsRoute)
+
+// Chat Completions API (OpenAI-compatible pass-through)
+app.post('/v1/chat/completions', chatController)
+
+// ============ Error Handling ============
+app.onError((err, c) => {
+
+  return c.json(
+    {
+      id: 'resp_error',
+      object: 'response',
+      status: 'failed',
+      error: { code: 'internal_error', message: err.message }
+    },
+    500
+  )
+})
+
+export default app

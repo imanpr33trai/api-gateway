@@ -1,67 +1,86 @@
+// src/controller/chat.controller.ts
 import type { Context } from 'hono'
-import z from 'zod'
+import { z } from 'zod'
 
-import { chatService } from '../services/chat.service'
-import { ConversationService } from '../services/conversation.service'
-import { ValidationError } from '../types/error.type'
-import { ChatRequestSchema } from '../types/types'
+import {
+  chatCompletionService,
+  chatCompletionStreamService
+} from '../services/chat.service'
+import { ChatCompletionRequestSchema, ValidationError } from '../types'
+import { handleAsync } from '../utils/errorHandler'
 
 export const chatController = async (c: Context) => {
   try {
-    const requestData = await c.req.json()
+    const body = await c.req.json()
+    const parsed = ChatCompletionRequestSchema.parse(body)
 
-    // Validate the request data
-    const parsed = ChatRequestSchema.parse(requestData)
+    // Decide streaming or not
+    if (parsed.stream) {
+      // Streaming
+      parsed.stream = true as const
+      const providerResponse = await chatCompletionStreamService({
+        ...parsed,
+        stream: true
+      })
 
-    // If conversationId is provided, validate and store the conversation
-    if (parsed.conversationId) {
-      // Get or create conversation
-      const title =
-        parsed.messages[0]?.content?.substring(0, 50) || 'New Conversation'
-      await ConversationService.getOrCreateConversation(
-        parsed.conversationId,
-        title
-      )
+      if (!providerResponse.body) {
+        return c.text('Upstream provider did not return a stream', 500)
+      }
 
-      // Save user message
-      await ConversationService.saveMessage(
-        parsed.conversationId,
-        'user',
-        parsed.messages[parsed.messages.length - 1]?.content || '',
-        `msg-${Date.now()}`, // Generate a message ID
-        parsed.model
-      )
-    }
+      const reader = providerResponse.body.getReader()
+      const abortController = new AbortController()
 
-    // Call the chat service
-    const result = await chatService(
-      parsed.messages.map(m => m.content).join('\n')
-    )
+      c.req.raw.signal.addEventListener('abort', () => {
+        abortController.abort()
+        reader.cancel().catch(() => {})
+      })
 
-    // If conversationId was provided, save the assistant's response
-    if (parsed.conversationId) {
-      await ConversationService.saveMessage(
-        parsed.conversationId,
-        'assistant',
-        result.map(r => r.content).join('\n'),
-        `resp-${Date.now()}`, // Generate a response ID
-        parsed.model
-      )
-    }
+      const stream = new ReadableStream({
+        async pull(controller) {
+          try {
+            const { done, value } = await reader.read()
+            if (done) {
+              controller.close()
+              return
+            }
+            controller.enqueue(value)
+          } catch (error) {
+            if (abortController.signal.aborted) {
+              controller.close()
+            } else {
+              controller.error(error)
+            }
+          }
+        },
+        cancel() {
+          reader.cancel().catch(() => {})
+          abortController.abort()
+        }
+      })
 
-    // Return the result with conversation history if applicable
-    return c.json({
-      result,
-      conversationId: parsed.conversationId
-        ? { id: parsed.conversationId }
-        : undefined
-    })
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      throw new ValidationError('Invalid request data', {
-        issues: error.issues
+      const contentType =
+        providerResponse.headers.get('content-type') ?? 'text/event-stream'
+
+      return new Response(stream, {
+        status: 200,
+        headers: {
+          'Content-Type': contentType,
+          'Cache-Control': 'no-cache',
+          'X-Content-Type-Options': 'nosniff'
+        }
       })
     }
-    throw error
+
+    // Non‑streaming
+    const [result, error] = await handleAsync(chatCompletionService(parsed))
+    if (error) throw error
+    return c.json(result)
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      throw new ValidationError('Invalid request body', {
+        issues: err.issues
+      })
+    }
+    throw err
   }
 }

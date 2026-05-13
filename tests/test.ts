@@ -1,4 +1,3 @@
-// src/tests/chat.test.ts
 import { describe, test } from 'bun:test'
 import { Hono } from 'hono'
 

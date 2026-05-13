@@ -1,6 +1,6 @@
 import type { Context, Next } from 'hono'
 
-import { isAppError } from '../types/error.type'
+import { isAppError } from '../types'
 import { handleErrorResponse } from '../utils/errorHandler'
 
 export async function errorHandlingMiddleware(c: Context, next: Next) {

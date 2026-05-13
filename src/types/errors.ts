@@ -1,3 +1,6 @@
+// src/types/errors.ts
+// Application error types
+
 // Define specific error types for your application
 export class AppError extends Error {
   constructor(

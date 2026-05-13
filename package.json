@@ -4,9 +4,11 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "dev": "bun run src/index.ts",
+    "dev": "bun --hot run src/index.ts",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
