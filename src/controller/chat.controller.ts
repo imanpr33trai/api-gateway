@@ -35,7 +35,7 @@ export const chatController = async (c: Context) => {
         reader.cancel().catch(() => {})
       })
 
-      const stream = new ReadableStream({
+      const stream = new ReadableStream<Uint8Array>({
         async pull(controller) {
           try {
             const { done, value } = await reader.read()
