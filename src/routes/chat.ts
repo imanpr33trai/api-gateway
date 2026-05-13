@@ -1,10 +1,11 @@
-import { Hono } from "hono";
-import { chatController } from "../controller/chat.controller";
-import { generateController } from "../controller/generate.controller";
-import { tagsController } from "../controller/tags.controller";
+import { Hono } from 'hono'
 
-export const chatRoute = new Hono();
+import { chatController } from '../controller/chat.controller'
+import { generateController } from '../controller/generate.controller'
+import { tagsController } from '../controller/tags.controller'
 
-chatRoute.post("/generate", generateController);
-chatRoute.post("/chat", chatController);
-chatRoute.get("/tags", tagsController);
+export const chatRoute = new Hono()
+
+chatRoute.post('/generate', generateController)
+chatRoute.post('/chat', chatController)
+chatRoute.get('/tags', tagsController)

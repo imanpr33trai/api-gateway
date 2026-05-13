@@ -1,23 +1,24 @@
-import type { Context } from "hono";
+// src/controllers/models-controller.ts
+import type { Context } from 'hono'
 
-export const modelsController = async (c: Context) => {
-     const modelsFile = Bun.file("./models.json");
-     const modelsData = await modelsFile.json();
+import { Nvidia } from '../providers/nvidia'
 
-     const formattedModels = modelsData.models.map((model: {
-          id: string;
-          object?: string;
-          created?: number;
-          owned_by?: string;
-     }) => ({
-          id: model.id,
-          object: "model",
-          created: model.created ?? 1777625459,
-          owned_by: model.owned_by ?? "library",
-     }));
-
-     return c.json({
-          object: "list",
-          data: formattedModels,
-     });
-};
+export class ModelsController {
+  async listModels(c: Context): Promise<Response> {
+    try {
+      const nvidiaResp = await Nvidia.getAllModels()
+      const data = await nvidiaResp.json()
+      return c.json(data)
+    } catch (error: any) {
+      console.error('ModelsController error:', error)
+      return c.json(
+        {
+          object: 'list',
+          data: [],
+          error: { message: error.message }
+        },
+        500
+      )
+    }
+  }
+}

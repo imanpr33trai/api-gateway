@@ -1,6 +1,7 @@
-import { Hono } from "hono";
-import { modelsController } from "../controller/models.controller";
+import { Hono } from 'hono'
 
-export const modelsRoute = new Hono();
+import { ModelsController } from '../controller/models.controller'
 
-modelsRoute.get("/models", modelsController);
+export const modelsRoute = new Hono()
+
+modelsRoute.get('/models', new ModelsController().listModels)

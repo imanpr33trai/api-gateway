@@ -11,7 +11,7 @@ Client (Codex/Tool)
 +-------------------+
 |   Controllers     |
 | /v1/responses   | -> ResponsesController
-| /v1/chat/       | -> ChatController  
+| /v1/chat/       | -> ChatController
 | completions       |
 | /v1/models       | -> ModelsController
 +-------------------+
@@ -41,27 +41,32 @@ Client (Codex/Tool)
 ## Key Components
 
 ### 1. Converters (`src/converters/`)
+
 - **responses-to-openai.ts**: THE KEY CONVERTER
   - Takes Responses API request -> converts to OpenAI Chat Completions format
   - Takes OpenAI response -> converts to Responses API format
   - Acts as middleware between the two API styles
 
 ### 2. Controllers (`src/controllers/`)
+
 - **responses-controller.ts**: Handles `/v1/responses` (new API style)
 - **chat-controller.ts**: Handles `/v1/chat/completions` (old API style)
 - **models-controller.ts**: Handles `/v1/models`
 
 ### 3. Services (`src/services/`)
+
 - **provider-service.ts**: Business logic for provider operations
   - `chatCompletion()`: Non-streaming requests
   - `streamChatCompletion()`: Streaming requests
   - `listModels()`: List available models
 
 ### 4. Providers (`src/providers/`)
+
 - Currently supports **NVIDIA** (OpenAI compatible)
 - Can be extended to support other providers (OpenAI, Anthropic, etc.)
 
 ### 5. Types (`src/types/`)
+
 - **responses.ts**: Responses API types (Zod schemas)
 - **chat.ts**: Chat Completions API types (Zod schemas)
 - **common.ts**: Shared types (enums, common interfaces)
@@ -70,16 +75,19 @@ Client (Codex/Tool)
 ## API Endpoints
 
 ### Old Style (Chat Completions API)
+
 - `POST /v1/chat/completions` - Chat completions (pass-through for OpenAI-compatible providers)
 - `GET /v1/models` - List available models
 
 ### New Style (Responses API)
+
 - `POST /v1/responses` - Create response (uses converter middleware)
 - `GET /v1/responses/{id}` - Retrieve response (future)
 
 ## Usage
 
 ### Environment Variables
+
 ```
 NVIDIA_API_KEY=your_nvidia_api_key
 PORT=11434
@@ -88,11 +96,13 @@ MODEL_MAP={"gpt-4": "openai/gpt-4"}
 ```
 
 ### Start Server
+
 ```bash
 bun run src/index.ts
 ```
 
 ### Connect Codex
+
 ```bash
 codex --oss --provider-base-url http://localhost:11434
 ```
