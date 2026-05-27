@@ -5,6 +5,7 @@ import { logger } from 'hono/logger'
 
 import { chatController } from './controller/chat.controller'
 import { modelsRoute } from './routes/models'
+import { minimaxAuthRoute } from './routes/minimax-auth'
 
 const app = new Hono()
 
@@ -19,13 +20,16 @@ app.get('/health', c => {
   return c.json({
     status: 'ok',
     version: '1.0.0',
-    providers: ['nvidia'],
+    providers: ['nvidia', 'minimax-oauth'],
     default_model: 'openai/gpt-oss-120b'
   })
 })
 
 // Models endpoint
 app.route('/', modelsRoute)
+
+// MiniMax OAuth endpoints
+app.route('/', minimaxAuthRoute)
 
 // Chat Completions API (OpenAI-compatible pass-through)
 app.post('/v1/chat/completions', chatController)

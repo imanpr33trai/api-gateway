@@ -8,19 +8,28 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate": "drizzle-kit migrate",
+    "db:start": "docker compose up -d",
+    "db:watch": "docker compose up",
+    "db:stop": "docker compose stop",
+    "db:down": "docker compose down",
     "fmt:check": "oxfmt --check"
-
   },
   "dependencies": {
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "drizzle-zod": "^0.8.3",
     "hono": "^4.12.14",
+    "pg": "^8.21.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@nkzw/eslint-plugin": "^2.0.0",
     "@types/bun": "latest",
+    "@types/pg": "^8.20.0",
     "@typescript-eslint/eslint-plugin": "^8.59.1",
     "@typescript-eslint/parser": "^8.59.1",
     "drizzle-kit": "^0.31.10",
