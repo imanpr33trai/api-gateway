@@ -5,6 +5,7 @@ export default defineConfig({
   jsxSingleQuote: false,
   quoteProps: 'consistent',
   semi: false,
+  sortPackageJson: true,
   singleQuote: true,
   sortImports: {
     groups: [

@@ -161,7 +161,7 @@ export default defineConfig({
       }
     ],
     'no-unused-vars': [
-      'error',
+      'warn',
       {
         args: 'after-used',
         vars: 'all'

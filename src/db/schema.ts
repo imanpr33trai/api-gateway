@@ -1,150 +1,185 @@
-import { relations, sql } from "drizzle-orm";
+/**
+ * Drizzle ORM schema for the provider + credentials tables.
+ * PostgreSQL dialect — uses pgTable, serial, jsonb, etc.
+ *
+ * Multi-tenant: users, api_keys, and user_credentials tables
+ * let each registered user manage their own provider credentials.
+ */
+
+import { sql } from 'drizzle-orm'
 import {
-     boolean,
-     index,
-     jsonb,
-     pgTable,
-     text,
-     timestamp,
-     uuid,
-     varchar,
-} from "drizzle-orm/pg-core";
+  boolean,
+  integer,
+  jsonb,
+  pgTable,
+  real,
+  serial,
+  text,
+  timestamp,
+  uniqueIndex
+} from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import type { z } from 'zod'
 
-// Reusable timestamps pattern
-export const timestamps = {
-     createdAt: timestamp("created_at", {
-          mode: "date",
-          precision: 3,
-          withTimezone: true,
-     })
-          .defaultNow()
-          .notNull(),
-     updatedAt: timestamp("updated_at", {
-          mode: "date",
-          precision: 3,
-          withTimezone: true,
-     })
-          .defaultNow()
-          .notNull()
-          .$onUpdateFn(() => new Date()),
-};
+// ─── Users Table ───────────────────────────────────────────────────
 
-export const user = pgTable("users", {
-     id: uuid().primaryKey().defaultRandom(),
-     name: text("name"),
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  displayName: text('display_name').notNull().default(''),
+  passwordHash: text('password_hash'),
+  role: text('role').notNull().default('user'), // "user" | "admin"
+  isActive: boolean('is_active').notNull().default(true),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow()
+})
 
-     email: varchar({ length: 255 }).notNull().unique(),
-     ...timestamps,
-});
+export const userInsertSchema = createInsertSchema(users)
+export type UserInsert = z.infer<typeof userInsertSchema>
 
-export const oauthProvider = pgTable(
-     "oauth_providers",
-     {
-          id: uuid("id").primaryKey().defaultRandom(),
-          userId: uuid("user_id")
-               .notNull()
-               .references(() => user.id, { onDelete: "cascade" }),
-          providerId: text("provider_id").notNull(),
-          region: text("region").notNull(),
-          portalBaseUrl: text("portal_base_url").notNull(),
-          inferenceBaseUrl: text("inference_base_url").notNull(),
-          clientId: text("client_id").notNull(),
-          scope: text("scope").notNull(),
-          resourceUrl: text("resource_url"),
-          isActive: boolean("is_active").default(true),
-          ...timestamps,
-     },
-     (table) => [
-          index("oauth_provider_user_idx").on(table.userId),
-          index("oauth_providers_active_idx")
-               .on(table.isActive)
-               .where(sql`${table.isActive}= true`),
-     ],
-);
+// ─── API Keys Table ────────────────────────────────────────────────
+// Each user can have multiple API keys for different environments.
+// Keys are stored hashed (SHA-256); only the prefix is stored in plaintext.
 
-export const oauthToken = pgTable("oauth_tokens", {
-     id: uuid("id").primaryKey().defaultRandom(),
-     providerId: uuid("provider_id")
-          .notNull()
-          .references(() => oauthProvider.id, { onDelete: "cascade" }),
-     userId: uuid("user_id")
-          .notNull()
-          .references(() => user.id, { onDelete: "cascade" }),
-     accessToken: text("access_token").notNull(),
-     refreshToken: text("refresh_token").notNull(),
-     tokenType: text("token_type").notNull().default("Bearer"),
-     scope: text("scope").notNull(),
-     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
-     obtainedAt: timestamp("obtained_at", { withTimezone: true })
-          .defaultNow()
-          .notNull(),
-     lastError: jsonb("last_error").$type<{
-          code: string;
-          message: string;
-          reason: string;
-          reloginRequired: boolean;
-          at: string;
-     } | null>(),
-     ...timestamps,
-});
+export const apiKeys = pgTable('api_keys', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  keyHash: text('key_hash').notNull(),
+  keyPrefix: text('key_prefix').notNull(), // first 8 chars of sk-... for display
+  label: text('label').notNull().default('default'),
+  scopes: jsonb('scopes')
+    .$type<string[]>()
+    .notNull()
+    .default(sql`'[]'::jsonb`),
+  lastUsedAt: timestamp('last_used_at'),
+  expiresAt: timestamp('expires_at'),
+  isActive: boolean('is_active').notNull().default(true),
+  createdAt: timestamp('created_at').notNull().defaultNow()
+})
 
-export const inferenceSessions = pgTable("inference_sessions", {
-     id: uuid("id").primaryKey().defaultRandom(),
-     userId: uuid("user_id")
-          .notNull()
-          .references(() => user.id, { onDelete: "cascade" }),
-     providerId: uuid("provider_id")
-          .notNull()
-          .references(() => oauthProvider.id, { onDelete: "cascade" }),
-     model: text("model").notNull(),
-     startedAt: timestamp("started_at", { withTimezone: true })
-          .defaultNow()
-          .notNull(),
-     endedAt: timestamp("ended_at", { withTimezone: true }),
-     tokenExpired: boolean("token_expired").default(false),
-});
+export const apiKeyInsertSchema = createInsertSchema(apiKeys)
+export type ApiKeyInsert = z.infer<typeof apiKeyInsertSchema>
 
-//Relations
+// ─── User Credentials Table ────────────────────────────────────────
+// Per-user OAuth/provider credentials. Replaces the global credentials table.
+// One credential row per (userId, providerName) pair.
 
-export const userRelations = relations(user, ({ many }) => ({
-     oauthProviders: many(oauthProvider),
-     oauthTokens: many(oauthToken),
-     inferenceSessions: many(inferenceSessions),
-}));
+export const userCredentials = pgTable(
+  'user_credentials',
+  {
+    id: serial('id').primaryKey(),
+    userId: integer('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    providerName: text('provider_name').notNull(),
+    portalBaseUrl: text('portal_base_url').notNull().default(''),
+    inferenceBaseUrl: text('inference_base_url').notNull().default(''),
+    clientId: text('client_id').notNull().default(''),
+    scope: text('scope').notNull().default(''),
+    tokenType: text('token_type').notNull().default('Bearer'),
+    accessToken: text('access_token').notNull().default(''),
+    refreshToken: text('refresh_token'),
+    region: text('region'),
+    obtainedAt: timestamp('obtained_at').notNull().defaultNow(),
+    expiresAt: timestamp('expires_at'),
+    expiresIn: integer('expires_in').notNull().default(0),
+    lastAuthError: jsonb('last_auth_error').$type<Record<
+      string,
+      unknown
+    > | null>(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow()
+  },
+  table => [
+    uniqueIndex('user_provider_unique').on(table.userId, table.providerName)
+  ]
+)
 
-export const oauthProviderRelations = relations(
-     oauthProvider,
-     ({ many, one }) => ({
-          user: one(user, {
-               fields: [oauthProvider.userId],
-               references: [user.id],
-          }),
-          tokens: many(oauthToken),
-          inferenceSessions: many(inferenceSessions),
-     }),
-);
+export const userCredentialInsertSchema = createInsertSchema(userCredentials)
+export type UserCredentialInsert = z.infer<typeof userCredentialInsertSchema>
 
-export const oauthTokenRelations = relations(oauthToken, ({ one }) => ({
-     provider: one(oauthProvider, {
-          fields: [oauthToken.providerId],
-          references: [oauthProvider.id],
-     }),
-     user: one(user, {
-          fields: [oauthToken.userId],
-          references: [user.id],
-     }),
-}));
+export const userCredentialSelectSchema = createSelectSchema(userCredentials)
+export type UserCredentialSelect = z.infer<typeof userCredentialSelectSchema>
+// ─── Providers Table ──────────────────────────────────────────────
 
-export const inferenceSessionsRelations = relations(
-     inferenceSessions,
-     ({ one }) => ({
-          user: one(user, {
-               fields: [inferenceSessions.userId],
-               references: [user.id],
-          }),
-          provider: one(oauthProvider, {
-               fields: [inferenceSessions.providerId],
-               references: [oauthProvider.id],
-          }),
-     }),
-);
+export const providers = pgTable('providers', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull().unique(),
+  apiMode: text('api_mode', {
+    enum: [
+      'chat_completions',
+      'anthropic_messages',
+      'codex_responses',
+      'bedrock_converse'
+    ]
+  })
+    .notNull()
+    .default('chat_completions'),
+  aliases: jsonb('aliases').$type<string[]>().notNull().default([]),
+  displayName: text('display_name').notNull().default(''),
+  description: text('description').notNull().default(''),
+  signupUrl: text('signup_url').notNull().default(''),
+  envVars: jsonb('env_vars').$type<string[]>().notNull().default([]),
+  baseUrl: text('base_url').notNull().default(''),
+  modelsUrl: text('models_url').notNull().default(''),
+  authType: text('auth_type').notNull().default('api_key'),
+  supportsHealthCheck: boolean('supports_health_check').notNull().default(true),
+  hostname: text('hostname').notNull().default(''),
+  fallbackModels: jsonb('fallback_models')
+    .$type<string[]>()
+    .notNull()
+    .default([]),
+  defaultHeaders: jsonb('default_headers')
+    .$type<Record<string, string>>()
+    .notNull()
+    .default(sql`'{}'::jsonb`),
+  fixedTemperature: real('fixed_temperature'),
+  defaultMaxTokens: integer('default_max_tokens'),
+  defaultAuxModel: text('default_aux_model').notNull().default(''),
+  oauthConfig: jsonb('oauth_config').$type<Record<string, unknown> | null>(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow()
+})
+
+export const providerInsertSchema = createInsertSchema(providers)
+export type ProviderInsert = z.infer<typeof providerInsertSchema>
+
+// ─── Legacy Credentials Table (deprecated — use user_credentials) ──
+
+export const credentials = pgTable('credentials', {
+  id: serial('id').primaryKey(),
+  providerName: text('provider_name').notNull().unique(),
+  portalBaseUrl: text('portal_base_url').notNull().default(''),
+  inferenceBaseUrl: text('inference_base_url').notNull().default(''),
+  clientId: text('client_id').notNull().default(''),
+  scope: text('scope').notNull().default(''),
+  tokenType: text('token_type').notNull().default('Bearer'),
+  accessToken: text('access_token').notNull().default(''),
+  refreshToken: text('refresh_token'),
+  region: text('region'),
+  obtainedAt: timestamp('obtained_at').notNull().defaultNow(),
+  expiresAt: timestamp('expires_at'),
+  expiresIn: integer('expires_in').notNull().default(0),
+  lastAuthError: jsonb('last_auth_error').$type<Record<
+    string,
+    unknown
+  > | null>(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow()
+})
+
+// ─── Provider Models Cache ────────────────────────────────────────
+
+export const providerModels = pgTable('provider_models', {
+  id: serial('id').primaryKey(),
+  providerName: text('provider_name').notNull().unique(),
+  models: jsonb('models').$type<string[]>().notNull().default([]),
+  source: text('source', {
+    enum: ['live', 'fallback', 'error']
+  })
+    .notNull()
+    .default('fallback'),
+  fetchedAt: timestamp('fetched_at').notNull().defaultNow(),
+  error: text('error')
+})

@@ -129,3 +129,26 @@ bun test tests/converter.test.ts
 - Add support for NVIDIA's `/v1/generate` endpoint
 - Add middleware for request/response logging
 - Add rate limiting and caching
+
+curl -X POST "$BASE_URL/chat/completions" \
+ -H "Content-Type: application/json" \
+ -H "Accept: application/json" \
+ -H "Authorization: Bearer $API_KEY" \
+-H "X-Provider: opencode-zen" \
+-d '{
+"model": "big-pickle",
+"messages": [
+{
+"role": "user",
+"content": "Hello, how are you?"
+}
+],
+"temperature": 0.7,
+"maxTokens": 512,
+"stream": false,
+"reasoningConfig": {
+"enabled": true,
+"effort": "medium"
+},
+
+}'

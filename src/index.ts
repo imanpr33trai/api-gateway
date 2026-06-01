@@ -1,51 +1,21 @@
 // src/index.ts
 import { Hono } from 'hono'
-import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import { prettyJSON } from 'hono/pretty-json'
 
-import { chatController } from './controller/chat.controller'
-import { modelsRoute } from './routes/models'
-import { minimaxAuthRoute } from './routes/minimax-auth'
+import { providersRouter } from './routes/providers'
 
 const app = new Hono()
 
-// Middleware
-app.use('*', cors())
 app.use('*', logger())
+app.use('*', prettyJSON())
+// app.use('*', bodyLimit)
+// app.use('*', securityHeaders)
+// app.use('*', apiKeyAuth)
+// app.use('*', rateLimiter)
+// app.use('*', createOriginCors()) // Models endpoint
+// app.route('/', modelsRoute)
 
-// ============ Routes ============
-
-// Health check
-app.get('/health', c => {
-  return c.json({
-    status: 'ok',
-    version: '1.0.0',
-    providers: ['nvidia', 'minimax-oauth'],
-    default_model: 'openai/gpt-oss-120b'
-  })
-})
-
-// Models endpoint
-app.route('/', modelsRoute)
-
-// MiniMax OAuth endpoints
-app.route('/', minimaxAuthRoute)
-
-// Chat Completions API (OpenAI-compatible pass-through)
-app.post('/v1/chat/completions', chatController)
-
-// ============ Error Handling ============
-app.onError((err, c) => {
-
-  return c.json(
-    {
-      id: 'resp_error',
-      object: 'response',
-      status: 'failed',
-      error: { code: 'internal_error', message: err.message }
-    },
-    500
-  )
-})
+app.route('/api/providers', providersRouter)
 
 export default app
