@@ -12,14 +12,17 @@ app.route('/', chatRouter)
 describe('Chat Endpoint Test', () => {
   test('should log the response from the /chat endpoint', async () => {
     // Simulate a request to the /chat endpoint
-    const res = await app.request('/chat/completions', {
+    const res = await fetch('https://opencode.ai/zen/v1/chat/completions', {
       method: 'POST',
       body: JSON.stringify({
+        model: 'big-pickle',
         messages: [{ content: 'Hlo', role: Role.USER }],
-        stream: true,
-        model: ''
+        stream: true
       } satisfies ChatCompletionRequest),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer sk-'
+      }
     })
 
     // Log the response

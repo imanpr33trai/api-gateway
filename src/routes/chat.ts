@@ -75,7 +75,7 @@ export const chatRouter = new Hono()
         return streamSSE(c, async sseStream => {
           const url = `${baseUrl.replace(/\/+$/, '')}/chat/completions`
           const headers: Record<string, string> = {
-            'Content-Type': 'applications/json',
+            'Content-Type': 'application/json',
             'Accept': 'text/event-stream',
             'User-Agent': 'ts-provider-oauth/0.1.0'
           }
@@ -208,6 +208,40 @@ export const chatRouter = new Hono()
       })
     }
   )
+  .get('/chat/completion', c => {
+    const predefinedRequest = {
+      model: 'big-pickle',
+      messages: [{ role: 'user', content: 'Hello, how are you?' }],
+      temperature: 0.7,
+      maxTokens: 512,
+      stream: false
+    }
+
+    return c.json({
+      id: `chatcmpl-predefined-${Date.now()}`,
+      object: 'chat.completion',
+      created: Math.floor(Date.now() / 1000),
+      model: predefinedRequest.model,
+      choices: [
+        {
+          index: 0,
+          message: {
+            role: 'assistant',
+            content:
+              `This is a predefined response for the model "${predefinedRequest.model}". ` +
+              'To get actual completions, send a POST request with your messages and model.'
+          },
+          finish_reason: 'stop'
+        }
+      ],
+      usage: {
+        promptTokens: predefinedRequest.messages.length * 10,
+        completionTokens: 20,
+        totalTokens: predefinedRequest.messages.length * 10 + 20
+      },
+      predefinedRequest
+    })
+  })
 
 async function resolveCredentials(
   providerName: string,
@@ -252,7 +286,7 @@ async function makeApiRequest(
 ): Promise<unknown> {
   const url = `${baseUrl.replace(/\/+$/, '')}/chat/completions`
   const headers: Record<string, string> = {
-    'Content-Type': 'aplication/json',
+    'Content-Type': 'application/json',
     'Accept': 'application/json',
     'User-Agent': 'ts-provider-oauth/0.1.0'
   }

@@ -6,7 +6,8 @@ import { openAIErrorResponse } from '../lib/openai-error'
 import {
   getProvider,
   listProviders,
-  resolveApiKey
+  resolveApiKey,
+  upsertProvider
 } from '../providers/registry'
 
 export const providersRouter = new Hono()
@@ -85,6 +86,26 @@ export const providersRouter = new Hono()
       })
     }
   })
+  .patch(
+    '/:name/api-key',
+    zValidator('json', z.object({ apiKey: z.string().min(1) })),
+    async c => {
+      const name = c.req.param('name')
+      const { apiKey } = c.req.valid('json')
+
+      const profile = await getProvider(name)
+      if (!profile) {
+        return openAIErrorResponse(c, `Provider "${name}" not found`, {
+          code: 'provider_not_found',
+          status: 404
+        })
+      }
+
+      const updated = await upsertProvider({ ...profile, apiKey })
+      return c.json({ provider: updated })
+    }
+  )
+
   .post(
     '/:name/check',
     zValidator('json', z.object({ apiKey: z.string().optional() })),

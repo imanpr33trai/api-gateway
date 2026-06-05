@@ -14,7 +14,7 @@ export const ERROR_CODES = {
   login_required: { status: 401, type: 'authentication_error' as const },
   relogin_required: { status: 401, type: 'authentication_error' as const },
   api_key_required: { status: 401, type: 'authentication_error' as const },
-
+  authorization_failed: { status: 401, type: 'authorization_error' as const },
   // ── Provider / Model ────────────────────────────────────────
   model_not_found: { status: 404, type: 'invalid_request_error' as const },
   context_length_exceeded: {

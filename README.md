@@ -130,7 +130,7 @@ bun test tests/converter.test.ts
 - Add middleware for request/response logging
 - Add rate limiting and caching
 
-curl -X POST "$BASE_URL/chat/completions" \
+curl -X POST "http://localhost:3000/v1/chat/completions" \
  -H "Content-Type: application/json" \
  -H "Accept: application/json" \
  -H "Authorization: Bearer $API_KEY" \

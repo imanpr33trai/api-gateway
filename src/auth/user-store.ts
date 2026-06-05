@@ -1,5 +1,5 @@
 import { and, eq } from 'drizzle-orm'
-import { createHash, randomBytes } from 'node:crypto'
+import { randomBytes } from 'node:crypto'
 
 import { db } from '../db'
 import { apiKeys, users } from '../db/schema'
@@ -32,15 +32,11 @@ export interface CreatedApiKey {
 
 const API_KEY_PREFIX = 'sk-'
 
-function hashKey(key: string): string {
-  return createHash('sha256').update(key).digest('hex')
-}
-function generateApiKey(): { raw: string; hash: string; prefix: string } {
+function generateApiKey(): { raw: string; prefix: string } {
   const entropy = randomBytes(32).toString('hex')
   const raw = `${API_KEY_PREFIX}${entropy}`
-  const hash = hashKey(raw)
   const prefix = raw.slice(0, 11)
-  return { raw, hash, prefix }
+  return { raw, prefix }
 }
 
 export async function createUser(
@@ -150,13 +146,13 @@ export const createApiKey = async (
   label?: string,
   scopes?: string[]
 ): Promise<CreatedApiKey> => {
-  const { hash, prefix, raw } = generateApiKey()
+  const { raw, prefix } = generateApiKey()
 
   const [row] = await db
     .insert(apiKeys)
     .values({
       userId,
-      keyHash: hash,
+      keyHash: raw,
       keyPrefix: prefix,
       label: label ?? 'default',
       scopes: scopes ?? ['*']
@@ -188,12 +184,10 @@ export const resolveUserFromApiKey = async (
     ? bearerToken.slice(7)
     : bearerToken
 
-  const hash = hashKey(token)
-
   const [row] = await db
     .select()
     .from(apiKeys)
-    .where(and(eq(apiKeys.keyHash, hash), eq(apiKeys.isActive, true)))
+    .where(and(eq(apiKeys.keyHash, token), eq(apiKeys.isActive, true)))
     .limit(1)
 
   if (!row) return null

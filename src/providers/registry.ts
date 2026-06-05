@@ -32,7 +32,8 @@ function buildFullProfileMap(
       fixedTemperature: row.fixedTemperature ?? null,
       defaultMaxTokens: row.defaultMaxTokens ?? null,
       defaultHeaders: row.defaultHeaders ?? {},
-      oauthConfig: row.oauthConfig
+      oauthConfig: row.oauthConfig,
+      apiKey: row.apiKey ?? ''
     }
     map.set(profile.name, profile)
     for (const alias of profile.aliases) {
@@ -110,10 +111,11 @@ export async function upsertProvider(
     fallbackModels: data.fallbackModels,
     defaultAuxModel: data.defaultAuxModel,
     defaultHeaders: data.defaultHeaders,
-    defaultMaxTokens: data.defaultMaxTokens ?? null,
     displayName: data.displayName,
+    defaultMaxTokens: data.defaultMaxTokens ?? null,
     fixedTemperature: data.fixedTemperature ?? null,
-    oauthConfig: data.oauthConfig ?? null
+    oauthConfig: data.oauthConfig ?? null,
+    apiKey: data.apiKey
   }
 
   if (existing.length > 0) {
@@ -132,13 +134,7 @@ export async function resolveApiKey(
   const profile = await getProvider(providerName)
   if (!profile) return null
 
-  for (const envVars of profile.envVars) {
-    const envValue = process.env[envVars]
-    if (envValue && envValue.length > 4) {
-      return envValue
-    }
-  }
-  return null
+  return profile.apiKey || null
 }
 
 export async function hasApiKey(providerName: string): Promise<boolean> {

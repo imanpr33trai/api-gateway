@@ -37,6 +37,50 @@ export const users = pgTable('users', {
 export const userInsertSchema = createInsertSchema(users)
 export type UserInsert = z.infer<typeof userInsertSchema>
 
+// ─── Sessions Table ────────────────────────────────────────────────
+// Opaque session tokens (sess_ prefix), SHA-256 hashed for DB storage.
+// Sessions are short-lived (15-60 min) with sliding expiry.
+
+export const sessions = pgTable('sessions', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  tokenHash: text('token_hash').notNull(),
+  expiresAt: timestamp('expires_at').notNull(),
+  lastActiveAt: timestamp('last_active_at').notNull().defaultNow(),
+  createdAt: timestamp('created_at').notNull().defaultNow()
+})
+
+export const sessionInsertSchema = createInsertSchema(sessions)
+export type SessionInsert = z.infer<typeof sessionInsertSchema>
+export const sessionSelectSchema = createSelectSchema(sessions)
+export type SessionSelect = z.infer<typeof sessionSelectSchema>
+
+// ─── Refresh Tokens Table ──────────────────────────────────────────
+// Rotation model: on /refresh, mark old token as is_used=true,
+// issue new session+refresh pair. If a rotated token is replayed
+// → theft detection (revoke all user sessions).
+// Tokens stored as SHA-256 hash (ref_ prefix), never plaintext in DB.
+
+export const refreshTokens = pgTable('refresh_tokens', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  sessionId: integer('session_id')
+    .references(() => sessions.id, { onDelete: 'set null' }),
+  tokenHash: text('token_hash').notNull(),
+  isUsed: boolean('is_used').notNull().default(false),
+  expiresAt: timestamp('expires_at').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow()
+})
+
+export const refreshTokenInsertSchema = createInsertSchema(refreshTokens)
+export type RefreshTokenInsert = z.infer<typeof refreshTokenInsertSchema>
+export const refreshTokenSelectSchema = createSelectSchema(refreshTokens)
+export type RefreshTokenSelect = z.infer<typeof refreshTokenSelectSchema>
+
 // ─── API Keys Table ────────────────────────────────────────────────
 // Each user can have multiple API keys for different environments.
 // Keys are stored hashed (SHA-256); only the prefix is stored in plaintext.
@@ -140,6 +184,7 @@ export const providers = pgTable('providers', {
   defaultAuxModel: text('default_aux_model').notNull().default(''),
   oauthConfig: jsonb('oauth_config').$type<Record<string, unknown> | null>(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
+  apiKey: text('api_key').notNull().default(''),
   updatedAt: timestamp('updated_at').notNull().defaultNow()
 })
 

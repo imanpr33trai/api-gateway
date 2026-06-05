@@ -50,7 +50,8 @@ export const ProviderProfileDataSchema = z.object({
   fixedTemperature: z.number().nullable().default(null),
   defaultMaxTokens: z.number().nullable().default(null),
   defaultAuxModel: z.string().default(''),
-  oauthConfig: z.record(z.string(), z.unknown()).nullable().default(null)
+  oauthConfig: z.record(z.string(), z.unknown()).nullable().default(null),
+  apiKey: z.string().default('')
 })
 
 export type ProviderProfileData = z.infer<typeof ProviderProfileDataSchema>
@@ -123,12 +124,16 @@ export interface ModelCheckResponse {
 }
 export class AuthError extends Error {
   public readonly provider: string
-  public readonly code: ErrorCode
+  public readonly code: ErrorCode | string
   public readonly reloginRequired?: boolean
 
   constructor(
     message: string,
-    opts: { provider: string; code: ErrorCode; reloginRequired?: boolean }
+    opts: {
+      provider: string
+      code: ErrorCode | string
+      reloginRequired?: boolean
+    }
   ) {
     super(message)
     this.name = 'AuthError'

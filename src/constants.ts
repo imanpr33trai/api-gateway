@@ -1,33 +1,13 @@
-export const defaultPort = '11434'
-export const defaultHost = `http://127.0.0.1:${defaultPort}`
+// ─── MINIMAX Constants ────────────────────────────────────────────────────
 
-export const MINIMAX = {
-  OAUTH: {
-    CLIENT_ID: '78257093-7e40-4613-99e0-527b14b39113',
-    SCOPE: 'group_id profile model.completion',
-    GRANT_TYPE: 'urn:ietf:params:oauth:grant-type:user_code',
-    REFRESH_SKEW_SECONDS: 60
-  },
-  ENDPOINTS: {
-    global: {
-      portal: 'https://api.minimax.io',
-      inference: 'https://api.minimax.io/anthropic'
-    },
-    cn: {
-      portal: 'https://api.minimaxi.com',
-      inference: 'https://api.minimaxi.com/anthropic'
-    }
-  },
-  // Type-safe addition: Provider-specific metadata
-  DEFAULT_REGION: 'global'
-} as const
-
-export const QWEN = {
-  OAUTH: {
-    CLIENT_ID: '78257093-7e40-4613-99e0-527b14b39113'
-  },
-  ENDPOINTS: {
-    BASE_URL: 'https://portal.qwen.ai/v1',
-    TOKEN_URL: 'https://chat.qwen.ai/api/v1/oauth2/token'
-  }
-}
+export const MINIMAX_OAUTH_CLIENT_ID = '78257093-7e40-4613-99e0-527b14b39113'
+export const MINIMAX_OAUTH_SCOPE = 'group_id profile model.completion'
+export const MINIMAX_OAUTH_GRANT_TYPE =
+  'urn:ietf:params:oauth:grant-type:user_code'
+export const MINIMAX_OAUTH_GLOBAL_BASE = 'https://api.minimax.io'
+export const MINIMAX_OAUTH_CN_BASE = 'https://api.minimaxi.com'
+export const MINIMAX_OAUTH_GLOBAL_INFERENCE = 'https://api.minimax.io/anthropic'
+export const MINIMAX_OAUTH_CN_INFERENCE = 'https://api.minimaxi.com/anthropic'
+export const MINIMAX_OAUTH_REFRESH_SKEW_SECONDS = 60
+export const MINIMAX_OAUTH_TOKEN_ENDPOINT = '/oauth/token'
+export const MINIMAX_OAUTH_CODE_ENDPOINT = '/oauth/code'
