@@ -31,7 +31,7 @@ const OPENCODE_ZEN = provider({
   signupUrl: 'https://opencode.ai',
   envVars: ['OPENCODE_ZEN_API_KEY'],
   baseUrl: 'https://opencode.ai/zen/v1',
-  defaultAuxModel: 'gemini-3-flash',
+  defaultAuxModel: 'big-pickle',
   supportsHealthCheck: false
 })
 

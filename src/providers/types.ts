@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-redundant-type-constituents
 import z from 'zod'
 
 import type { ErrorCode } from '../lib/error-codes'
@@ -11,6 +12,7 @@ export const AuthType = z.enum([
   'copilot',
   'exeternal_process',
   'aws_sdk',
+  'free',
   'none'
 ])
 export type AuthType = z.infer<typeof AuthType>

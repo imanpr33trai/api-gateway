@@ -2,7 +2,7 @@
 // Re-exports for convenient imports
 
 // API schemas and types
+export * from '../providers/types'
 export * from './api'
-export * from './provider'
 // Error types
 export * from './errors'

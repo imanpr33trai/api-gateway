@@ -5,6 +5,7 @@ export default defineConfig({
     typeAware: true,
     typeCheck: true
   },
+  ignorePatterns: ['dist'],
   categories: {
     correctness: 'error',
     suspicious: 'error'
