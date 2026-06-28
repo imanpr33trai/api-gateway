@@ -28,6 +28,7 @@ export const ERROR_CODES = {
 
   // ── Request errors ──────────────────────────────────────────
   invalid_request: { status: 400, type: 'invalid_request_error' as const },
+  api_error: { status: 400, type: 'api_error' as const },
   invalid_content_part: { status: 400, type: 'invalid_request_error' as const },
   unsupported_content_type: {
     status: 400,

@@ -59,7 +59,7 @@ export interface Usage {
 export interface ToolCall {
   id: string
   name: string
-  arguements: string
+  arguments: string
   providerData?: Record<string, unknown>
 }
 

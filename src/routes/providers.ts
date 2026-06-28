@@ -70,7 +70,7 @@ providersRouter.post(
         try {
           const modelsUrl = profile.modelsUrl || `${profile.baseUrl}/models`
           const res = await fetch(modelsUrl)
-          const data = await res.json()
+          const data: unknown = await res.json()
           const models = Array.isArray(data)
             ? data
             : ((data as Record<string, unknown>)?.data ?? [])
@@ -118,10 +118,10 @@ providersRouter.post(
         })
       }
 
-      const data = await response.json()
+      const data: unknown = await response.json()
       const models = Array.isArray(data)
         ? data
-        : ((data as Record<string, unknown>).data ?? [])
+        : ((data as Record<string, unknown>)?.data ?? [])
 
       return c.json({
         valid: true,

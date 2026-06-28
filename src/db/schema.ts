@@ -36,6 +36,8 @@ export const users = pgTable('users', {
 
 export const userInsertSchema = createInsertSchema(users)
 export type UserInsert = z.infer<typeof userInsertSchema>
+export const userSelect = createSelectSchema(users)
+export type UserSelect = z.infer<typeof userSelect>
 
 // ─── Sessions Table ────────────────────────────────────────────────
 // Opaque session tokens (sess_ prefix), SHA-256 hashed for DB storage.
@@ -68,8 +70,9 @@ export const refreshTokens = pgTable('refresh_tokens', {
   userId: integer('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  sessionId: integer('session_id')
-    .references(() => sessions.id, { onDelete: 'set null' }),
+  sessionId: integer('session_id').references(() => sessions.id, {
+    onDelete: 'set null'
+  }),
   tokenHash: text('token_hash').notNull(),
   isUsed: boolean('is_used').notNull().default(false),
   expiresAt: timestamp('expires_at').notNull(),
